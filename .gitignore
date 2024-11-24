@@ -8,3 +8,5 @@
 /Application/obj/Release
 /Domain/.vs
 /Domain/obj
+/Services/.vs/Services
+/Services/obj
