@@ -5,3 +5,6 @@
 /Application/.vs/Application
 /Application/obj/Debug
 /Application/bin/Debug
+/Application/obj/Release
+/Domain/.vs
+/Domain/obj
