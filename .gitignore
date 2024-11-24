@@ -2,6 +2,13 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/obj
-/App.config
-/Program.cs
+/Application/.vs/Application
+/Application/obj/Debug
+/Application/bin/Debug
+/Application/obj/Release
+/Domain/.vs
+/Domain/obj
+/Services/.vs/Services
+/Services/obj
+/Presentation/.vs/Presentation
+/Presentation/obj
