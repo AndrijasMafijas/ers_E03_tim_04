@@ -4,4 +4,7 @@
 
 /Application/bin/Debug/net8.0
 /Application/obj
-/.vs/Projekat/FileContentIndex
+
+/Domain/obj
+/Presentation/obj
+/Services/obj
