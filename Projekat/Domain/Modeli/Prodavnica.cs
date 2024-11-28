@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Servisi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,18 @@ using System.Threading.Tasks;
 
 namespace Domain.Modeli
 {
-    public class Prodavnica
+    public class Prodavnica : IProdavnica
     {
         public int id { get; set; } = 0;
         public List<Oruzje> listaOruzja { get; set; } 
         public List<Napitak> listaNapitaka { get; set; } 
         public int ukupanPrihod { get; set; } = 0;
 
-        public Prodavnica() { }
+        public Prodavnica() 
+        {
+            listaOruzja = new List<Oruzje>();
+            listaNapitaka = new List<Napitak>();
+        }
 
         public Prodavnica(int Id,List<Oruzje> x,List<Napitak> y,int UkupanPrihod)
         {
@@ -25,7 +30,7 @@ namespace Domain.Modeli
 
         public bool DodajOruzje(Oruzje x)
         { 
-            if(x == null)
+            if(x is not Oruzje)
             {
                 return false;
             }
@@ -36,13 +41,13 @@ namespace Domain.Modeli
                     return false;
                 }
             }
-            listaOruzja.add(x);
+            listaOruzja.Add(x);
             return true;
         }
 
         public bool DodajNapitak(Napitak x)
         {
-            if (x == null)
+            if (x is not Napitak)
             {
                 return false;
             }
@@ -53,7 +58,7 @@ namespace Domain.Modeli
                     return false;
                 }
             }
-            listaNapitaka.add(x);
+            listaNapitaka.Add(x);
             return true;
         }
     }

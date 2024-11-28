@@ -7,21 +7,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Modeli
 {
-	public class Napitak
+	public class Napitak : Ajtem
 	{
 		public string nazivNapitka { get; set; } = string.Empty;
-		public int cena { get; set; } = 0;
-		public int pojacanjeNapada { get; set; } = 0;
-		public int dostupnoZaKupovinu { get; set; } = 0;
 
-		public Napitak() {	}
-
-		public Napitak(string NazivNapitka,int Cena,int PojacanjeNapada,int DostupnoZaKupovinu)
+		public Napitak(string NazivNapitka,int Cena,int PojacanjeNapada,int DostupnoZaKupovinu) : base(Cena,PojacanjeNapada,DostupnoZaKupovinu)
 		{
 			nazivNapitka = NazivNapitka;
-			cena = Cena;
-			pojacanjeNapada = PojacanjeNapada;
-			dostupnoZaKupovinu = DostupnoZaKupovinu;
 		}
 
 	}

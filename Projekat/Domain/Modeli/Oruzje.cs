@@ -7,21 +7,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Modeli
 {
-	public class Oruzje
+	public class Oruzje : Ajtem
 	{
         public string nazivOruzja { get; set; } = string.Empty;
-        public int cena { get; set; } = 0;
-        public int pojacanjeNapada { get; set; } = 0;
-        public int dostupnoZaKupovinu { get; set; } = 0;
 
-        public Oruzje(string NazivOruzja, int Cena, int PojacanjeNapada, int DostupnoZaKupovinu)
+        public Oruzje(string NazivOruzja, int Cena, int PojacanjeNapada, int DostupnoZaKupovinu) : base(Cena, PojacanjeNapada,DostupnoZaKupovinu)
         {
             nazivOruzja = NazivOruzja;
-            cena = Cena;
-            pojacanjeNapada = PojacanjeNapada;
-            dostupnoZaKupovinu = DostupnoZaKupovinu;
         }
-
-        public Oruzje() { }
 	}
 }
