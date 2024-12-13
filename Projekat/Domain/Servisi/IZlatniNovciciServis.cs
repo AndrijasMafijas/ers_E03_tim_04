@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Servisi
 {
-    public interface IProdavnica
+    public interface IZlatniNovciciServis
     {
-        public bool DodajOruzje(Oruzje x);
-        public bool DodajNapitak(Napitak x);
+        public bool EliminacijaHeroja(Heroj pobednik, Heroj gubitnik);
+
+        public bool EliminacijaEntiteta(Heroj pobednik);
     }
 }
