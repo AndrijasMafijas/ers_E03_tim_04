@@ -1,8 +1,11 @@
-﻿namespace Domain.Repositories.HerojiRepository
+﻿using Domain.Modeli;
+
+namespace Domain.Repositories.HerojiRepository
 {
     public interface IHerojiRepository
     {
-        //public static bool DodajHeroja(Heroj heroj);
-        //public static bool UkloniHeroja(Heroj heroj);
+        public bool DodajHeroja(Heroj heroj);
+        public bool UkloniHeroja(Guid heroj);
+        public Heroj PronadjiPoId(Guid guid);
     }
 }

@@ -6,12 +6,15 @@ namespace Domain.Repositories.MapeRepository
     {
         public static List<Mapa> Mape { get; set; } = new List<Mapa>();
 
-        public MapeRepository()
+        static MapeRepository()
         {
-            Mape = new List<Mapa>();
+            Mape = new List<Mapa>
+            {
+                new Mapa("Test",Enumeracija.Tip_Mape.LETNJA,10,"Orlovi","Tigrovi",10)
+            };
         }
 
-        public static bool DodajMapu(Mapa map)
+        public bool DodajMapu(Mapa map)
         {
             if (map is not Mapa)
                 return false;
@@ -22,6 +25,14 @@ namespace Domain.Repositories.MapeRepository
             }
             Mape.Add(map);
             return true;
+        }
+
+        public Mapa PronadjiMapuPoNazivu(string nazivMape)
+        {
+            foreach (Mapa m in Mape) {
+                if (m.NazivMape == nazivMape) return m;
+            }
+            return new Mapa();
         }
     }
 }

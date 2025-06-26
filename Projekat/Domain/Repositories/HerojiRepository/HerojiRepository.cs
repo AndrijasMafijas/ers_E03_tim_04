@@ -4,14 +4,27 @@ namespace Domain.Repositories.HerojiRepository
 {
     public class HerojiRepository : IHerojiRepository
     {
-        public static List<Heroj> Heroji { get; set; } = new List<Heroj>();
+        private static List<Heroj> Heroji { get; set; } = new List<Heroj>();
 
-        public HerojiRepository()
+        static HerojiRepository()
         {
             Heroji = new List<Heroj>();
         }
 
-        public static bool DodajHeroja(Heroj heroj)
+        public Heroj PronadjiPoId(Guid guid)
+        {
+            Heroj? heroj= Heroji.FirstOrDefault((h) => (h.Id == guid));
+            if (heroj == null)
+            {
+                return new Heroj();
+            }
+            else { 
+            return heroj;
+            }
+
+        }
+
+        public bool DodajHeroja(Heroj heroj)
         {
             if (heroj is not Heroj)
             {
@@ -26,8 +39,10 @@ namespace Domain.Repositories.HerojiRepository
             return true;
         }
 
-        public static bool UkloniHeroja(Heroj heroj)
+        public bool UkloniHeroja(Guid IdHeroja)
         {
+            Heroj heroj = PronadjiPoId(IdHeroja);
+            if(heroj.NazivHeroja == string.Empty) return false;
             bool postoji = false;
             if (heroj is not Heroj)
             {

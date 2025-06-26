@@ -8,14 +8,14 @@ namespace Domain.Modeli
 {
     public abstract class Ajtem
     {
-        public int cena { get; set; } = 0;
-        public int pojacanjeNapada { get; set; } = 0;
-        public int dostupnoZaKupovinu { get; set; } = 0;
+        public int Cena { get; set; } = 0;
+        public int PojacanjeNapada { get; set; } = 0;
+        public int DostupnoZaKupovinu { get; set; } = 0;
         public Ajtem(int cena, int pojacanjeNapada, int dostupnoZaKupovinu)
         {
-            this.cena = cena;
-            this.pojacanjeNapada = pojacanjeNapada;
-            this.dostupnoZaKupovinu = dostupnoZaKupovinu;
+            this.Cena = cena;
+            this.PojacanjeNapada = pojacanjeNapada;
+            this.DostupnoZaKupovinu = dostupnoZaKupovinu;
         }
     }
 }
