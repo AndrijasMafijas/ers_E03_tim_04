@@ -12,7 +12,7 @@ namespace Domain.PomocneMetode
         public static int GenerisiBrojEntiteta()
         {
             Random random = new Random();
-            return (int)random.NextInt64(20, 90);
+            return (int)random.NextInt64(1, 10);
         }
     }
 }

@@ -8,7 +8,10 @@ namespace Domain.Repositories.HerojiRepository
 
         static HerojiRepository()
         {
-            Heroji = new List<Heroj>();
+            Heroji = new List<Heroj>()
+            {
+                new Heroj("Veliki Čarobnjak Emil",60,90,0)
+            };
         }
 
         public Heroj PronadjiPoId(Guid guid)
