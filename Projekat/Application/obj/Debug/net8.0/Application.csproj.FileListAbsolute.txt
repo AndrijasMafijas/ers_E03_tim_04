@@ -28,3 +28,11 @@ C:\Users\Administrator\source\repos\AndrijasMafijas\ers_E03_tim_04\Projekat\Appl
 C:\Users\Administrator\source\repos\AndrijasMafijas\ers_E03_tim_04\Projekat\Application\obj\Debug\net8.0\Application.pdb
 C:\Users\Administrator\source\repos\AndrijasMafijas\ers_E03_tim_04\Projekat\Application\obj\Debug\net8.0\Application.genruntimeconfig.cache
 C:\Users\Administrator\source\repos\AndrijasMafijas\ers_E03_tim_04\Projekat\Application\obj\Debug\net8.0\ref\Application.dll
+E:\ers_E03_tim_04\Projekat\Application\bin\Debug\net8.0\Domain.dll
+E:\ers_E03_tim_04\Projekat\Application\bin\Debug\net8.0\Presentation.dll
+E:\ers_E03_tim_04\Projekat\Application\bin\Debug\net8.0\Services.dll
+E:\ers_E03_tim_04\Projekat\Application\bin\Debug\net8.0\Presentation.pdb
+E:\ers_E03_tim_04\Projekat\Application\bin\Debug\net8.0\Services.pdb
+E:\ers_E03_tim_04\Projekat\Application\bin\Debug\net8.0\Domain.pdb
+E:\ers_E03_tim_04\Projekat\Application\obj\Debug\net8.0\Application.csproj.AssemblyReference.cache
+E:\ers_E03_tim_04\Projekat\Application\obj\Debug\net8.0\Applicat.44B5EDA2.Up2Date

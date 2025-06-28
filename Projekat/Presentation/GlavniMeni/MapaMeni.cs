@@ -26,6 +26,7 @@ namespace Presentation.GlavniMeni
 
                     //dodao sam jednu mapu u MapeRepository!
                 }
+                dobarUnos = true;
             }
             dobarUnos = false;
             while (!dobarUnos)
