@@ -8,6 +8,6 @@ public class Program
         AuthMeni.Autentifikacija();
         int brojEntiteta = EntitetMeni.OdabirEntiteta();
         MapaMeni.OdabirMape(brojEntiteta);
-
+        TimoviMeni.DodavanjeIgraca();
     }
 }

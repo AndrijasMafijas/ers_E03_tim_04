@@ -9,6 +9,7 @@ namespace Domain.Servisi
 {
     public interface ITimoviServis
     {
-        public bool DodavanjeHerojaUTim(Guid heroj);
+        bool DodavanjeIgracaUPlaviTim(Igrac x);
+        bool DodavanjeIgracaUCrveniTim(Igrac x);
     }
 }

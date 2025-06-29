@@ -7,5 +7,7 @@ namespace Domain.Repositories.HerojiRepository
         public bool DodajHeroja(Heroj heroj);
         public bool UkloniHeroja(Guid heroj);
         public Heroj PronadjiPoId(Guid guid);
+        Heroj PronadjiPoImenu(string x);
+        public string IspisiListu();
     }
 }

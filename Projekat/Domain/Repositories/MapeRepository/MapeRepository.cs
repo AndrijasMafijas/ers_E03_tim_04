@@ -4,7 +4,7 @@ namespace Domain.Repositories.MapeRepository
 {
     public class MapeRepository : IMapeRepository
     {
-        public static List<Mapa> Mape { get; set; } = new List<Mapa>();
+        private static List<Mapa> Mape { get; set; } = new List<Mapa>();
 
         static MapeRepository()
         {

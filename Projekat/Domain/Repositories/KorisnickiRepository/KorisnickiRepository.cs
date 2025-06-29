@@ -9,7 +9,7 @@ namespace Domain.Repositories.KorisnickiRepository
 {
     public class KorisnickiRepository : IKorisnickiRepository
     {
-        public static List<Korisnik> Korisnici { get; set; } = new List<Korisnik>();
+        private static List<Korisnik> Korisnici { get; set; } = new List<Korisnik>();
 
         static KorisnickiRepository()
         {

@@ -3,7 +3,7 @@ namespace Domain.Repositories.ProdavnicaRepository
 {
     public class ProdavnicaRepository : IProdavnicaRepository
     {
-        public static List<Prodavnica> Prodavnice { get; set; } = new List<Prodavnica>();
+        private static List<Prodavnica> Prodavnice { get; set; } = new List<Prodavnica>();
         static ProdavnicaRepository()
         {
             Prodavnice = new List<Prodavnica> {
