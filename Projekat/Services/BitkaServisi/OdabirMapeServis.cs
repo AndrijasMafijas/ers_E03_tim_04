@@ -9,18 +9,14 @@ using System.Threading.Tasks;
 
 namespace Services.BitkaServisi
 {
-    public class MapaIProdavnicaServis
+    public class OdabirMapeServis
     {
-        public MapaIProdavnicaServis() { }
+        public OdabirMapeServis() { }
         public Mapa PronadjiMapu(string ime)
         {
             IMapeRepository mapeRepository = new MapeRepository();
             return mapeRepository.PronadjiMapuPoNazivu(ime);
         }
-        public Prodavnica PronadjiProdavnicu(int id)
-        {
-            IProdavnicaRepository prodavnicaRepository = new ProdavnicaRepository();
-            return prodavnicaRepository.PronadjiProdavnicuPoIdu(id);
-        }
+        
     }
 }

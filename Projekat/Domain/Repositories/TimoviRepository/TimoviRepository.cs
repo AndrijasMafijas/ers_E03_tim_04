@@ -32,5 +32,15 @@ namespace Domain.Repositories.TimoviRepository
             CrveniTim.Add(x);
             return true;
         }
+
+        public List<Igrac> getCrveniTim()
+        {
+            return CrveniTim;
+        }
+
+        public List<Igrac> getPlaviTim()
+        {
+            return PlaviTim;
+        }
     }
 }

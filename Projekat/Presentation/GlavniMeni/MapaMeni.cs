@@ -1,14 +1,16 @@
 ﻿using Domain.Modeli;
 using Services.BitkaServisi;
+using Services.ProdavnicaServisi;
 
 namespace Presentation.GlavniMeni
 {
     public class MapaMeni
     {
         public MapaMeni() { }
-        public static void OdabirMape(int brojEntiteta)
+        public static int OdabirMape(int brojEntiteta,ref string IdMape)
         {
             Console.WriteLine("Now you need to choose map specifications: ");
+            int IdProdavnice = 0;
             bool dobarUnos = false;
             Prodavnica p;
             Mapa m;
@@ -16,7 +18,7 @@ namespace Presentation.GlavniMeni
             {
                 Console.WriteLine("Enter map name: ");
                 string nazivMape = Console.ReadLine();
-                MapaIProdavnicaServis mapaServis = new MapaIProdavnicaServis();
+                OdabirMapeServis mapaServis = new OdabirMapeServis();
                 if (nazivMape == string.Empty) continue;
                 m = mapaServis.PronadjiMapu(nazivMape);
                 if (m.NazivMape == string.Empty)
@@ -26,6 +28,7 @@ namespace Presentation.GlavniMeni
 
                     //dodao sam jednu mapu u MapeRepository!
                 }
+                IdMape = m.NazivMape;
                 dobarUnos = true;
             }
             dobarUnos = false;
@@ -33,9 +36,10 @@ namespace Presentation.GlavniMeni
             {
                 Console.WriteLine("Enter market id: ");
                 string idProdavnice = Console.ReadLine();
-                MapaIProdavnicaServis mapaServis = new MapaIProdavnicaServis();
+                OdabirMapeServis mapaServis = new OdabirMapeServis();
+                OdabirProdavniceServis ops = new OdabirProdavniceServis();
                 if (idProdavnice == string.Empty) continue;
-                p = mapaServis.PronadjiProdavnicu(Convert.ToInt32(idProdavnice));
+                p = ops.PronadjiProdavnicu(Convert.ToInt32(idProdavnice));
                 if (p.ID == 0)
                 {
                     Console.WriteLine("Market with id " + idProdavnice + " doesn't exist.");
@@ -43,7 +47,9 @@ namespace Presentation.GlavniMeni
                 }
                 dobarUnos = true;
                 //dodao sam zbog testiranja i jednu prodavnicu u ProdavnicaRepository
+                IdProdavnice = p.ID;
             }
+            return IdProdavnice;
         }
 
     }

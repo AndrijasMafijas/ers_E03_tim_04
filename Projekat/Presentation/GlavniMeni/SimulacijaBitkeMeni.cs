@@ -9,11 +9,15 @@ namespace Presentation.GlavniMeni
 {
     public class SimulacijaBitkeMeni
     {
-        public static void PokreniSimulacijuBitke()
+        public static void PokreniSimulacijuBitke(int IdProdavnice, string IdMape)
         {
             SimulacijaBitkeServis sbs = new SimulacijaBitkeServis();
             int duzinaTrajanjaBitke = sbs.GenerisiVremeTrajanjaBitke();
-            Console.WriteLine("Now the battle will begin and it will last for " + duzinaTrajanjaBitke + " seconds.");
+            Console.WriteLine("Now the battle will begin!");
+            float duzinaTB = Convert.ToSingle(duzinaTrajanjaBitke);
+            Console.WriteLine(sbs.SimulirajDogadjaj(duzinaTB, IdProdavnice, IdMape));
+
+            Console.WriteLine("Kraj!");
         }
     }
 }

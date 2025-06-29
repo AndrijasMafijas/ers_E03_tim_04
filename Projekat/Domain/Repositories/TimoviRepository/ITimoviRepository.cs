@@ -11,5 +11,7 @@ namespace Domain.Repositories.TimoviRepository
     {
         bool DodajUPlaviTim(Igrac x);
         bool DodajUCrveniTim(Igrac x);
+        List<Igrac> getCrveniTim();
+        List<Igrac> getPlaviTim();
     }
 }
