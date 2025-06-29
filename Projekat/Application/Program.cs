@@ -11,5 +11,6 @@ public class Program
         int IdProdavnice = MapaMeni.OdabirMape(brojEntiteta,ref IdMape);
         TimoviMeni.DodavanjeIgraca();
         SimulacijaBitkeMeni.PokreniSimulacijuBitke(IdProdavnice , IdMape);
+        StatistikaBitkeMeni.StatistikaBitke();
     }
 }
