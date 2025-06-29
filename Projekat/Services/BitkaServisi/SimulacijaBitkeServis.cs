@@ -21,6 +21,7 @@ namespace Services.BitkaServisi
         }
         public string SimulirajDogadjaj(float duzinaTB ,int IdProdavnice, string nazivMape)
         {
+            Thread.Sleep(Convert.ToInt32(Math.Floor(duzinaTB / 5)) * 1000);
             string x = "";
             IHerojiRepository heroji = new HerojiRepository();
             ITimoviRepository timovi = new TimoviRepository();
@@ -57,15 +58,16 @@ namespace Services.BitkaServisi
                 {
                     gubitnik = GeneratorNasumicnogElementaListe.OdaberiNasumicnogIgraca(timovi.getCrveniTim());
                 }
-                else gubitnik = GeneratorNasumicnogElementaListe.OdaberiNasumicnogIgraca(timovi.getCrveniTim());
+                else gubitnik = GeneratorNasumicnogElementaListe.OdaberiNasumicnogIgraca(timovi.getPlaviTim());
 
                 Heroj pobednikovHeroj = heroji.PronadjiPoId(pobednik.getIdHeroja());
                 Heroj gubitnikovHeroj = heroji.PronadjiPoId(gubitnik.getIdHeroja());
 
                 if(pobednikovHeroj.JacinaNapada > gubitnikovHeroj.ZivotniPoeni)
                 {
-                    x += pobednik.getIme() + " eliminated " + gubitnik.getIme() + " and earned 300 gold!";
+                    x += pobednik.getIme() + " eliminated " + gubitnik.getIme() + " and earned 300 gold!\n";
                     heroji.UkloniHeroja(gubitnik.getIdHeroja());
+                    timovi.UkloniIgraca(gubitnik.getIdHeroja());
                     pobednikovHeroj.TrenutnoNovcica += 300;
                     AutomatskaKupovinaServis aks = new AutomatskaKupovinaServis();
                     aks.ProveriNovac(pobednik, IdProdavnice);
@@ -74,7 +76,7 @@ namespace Services.BitkaServisi
                 {
                     gubitnikovHeroj.ZivotniPoeni -= pobednikovHeroj.JacinaNapada;
                     x += pobednik.getIme() + " damaged " + gubitnik.getIme() + " for " + pobednikovHeroj.JacinaNapada + 
-                        " HP ,\n " + gubitnik.getIme() + " now has only " + gubitnikovHeroj.ZivotniPoeni + " HP left";
+                        " HP ,\n " + gubitnik.getIme() + " now has only " + gubitnikovHeroj.ZivotniPoeni + " HP left!\n";
                 }
             }
             else
@@ -97,7 +99,7 @@ namespace Services.BitkaServisi
             }
 
 
-            Thread.Sleep(Convert.ToInt32(Math.Round(duzinaTB / 5)) * 1000);
+            
             return x;
         }
     }

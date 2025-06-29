@@ -13,5 +13,7 @@ namespace Domain.Repositories.TimoviRepository
         bool DodajUCrveniTim(Igrac x);
         List<Igrac> getCrveniTim();
         List<Igrac> getPlaviTim();
+        bool PronadjiHeroja(Guid x);
+        bool UkloniIgraca(Guid x);
     }
 }

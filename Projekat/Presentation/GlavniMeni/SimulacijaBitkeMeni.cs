@@ -15,6 +15,8 @@ namespace Presentation.GlavniMeni
             int duzinaTrajanjaBitke = sbs.GenerisiVremeTrajanjaBitke();
             Console.WriteLine("Now the battle will begin!");
             float duzinaTB = Convert.ToSingle(duzinaTrajanjaBitke);
+            //ovo predstavlja koliko dogadjaja ce se desiti maksimalno u toku borbe
+            for(int i=0;i<5;i++)
             Console.WriteLine(sbs.SimulirajDogadjaj(duzinaTB, IdProdavnice, IdMape));
 
             Console.WriteLine("Kraj!");

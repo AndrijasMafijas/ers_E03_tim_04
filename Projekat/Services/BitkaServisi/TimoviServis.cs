@@ -34,5 +34,11 @@ namespace Services.BitkaServisi
             IHerojiRepository heroji = new HerojiRepository();
             return heroji.IspisiListu();
         }
+
+        public bool PronadjiHeroja(Guid g)
+        {
+            ITimoviRepository timovi = new TimoviRepository();
+            return timovi.PronadjiHeroja(g);
+        }
     }
 }

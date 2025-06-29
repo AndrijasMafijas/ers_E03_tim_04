@@ -39,7 +39,7 @@ namespace Presentation.GlavniMeni
                 }
                 Console.WriteLine((i+1) + " hero: ");
                 string imeHeroja = Console.ReadLine();
-                if (imeIgraca == string.Empty)
+                if (imeHeroja == string.Empty)
                 {
                     Console.WriteLine("Must enter a valid hero name");
                     continue;
@@ -48,6 +48,11 @@ namespace Presentation.GlavniMeni
                 if(idHeroja == Guid.Empty)
                 {
                     Console.WriteLine("Must enter an existing hero name");
+                    continue;
+                }
+                if(ts.PronadjiHeroja(idHeroja))
+                {
+                    Console.WriteLine("That hero is already picked by another player");
                     continue;
                 }
                 ts.DodavanjeIgracaUPlaviTim(new Igrac(imeIgraca, idHeroja));
@@ -68,7 +73,7 @@ namespace Presentation.GlavniMeni
                 }
                 Console.WriteLine((i+1) +" hero: ");
                 string imeHeroja = Console.ReadLine();
-                if (imeIgraca == string.Empty)
+                if (imeHeroja == string.Empty)
                 {
                     Console.WriteLine("Must enter a valid hero name");
                     continue;
@@ -77,6 +82,11 @@ namespace Presentation.GlavniMeni
                 if (idHeroja == Guid.Empty)
                 {
                     Console.WriteLine("Must enter an existing hero name");
+                    continue;
+                }
+                if (ts.PronadjiHeroja(idHeroja))
+                {
+                    Console.WriteLine("That hero is already picked by another player");
                     continue;
                 }
                 ts.DodavanjeIgracaUCrveniTim(new Igrac(imeIgraca, idHeroja));

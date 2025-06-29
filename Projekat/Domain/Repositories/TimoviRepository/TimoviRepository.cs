@@ -11,6 +11,7 @@ namespace Domain.Repositories.TimoviRepository
     {
         private static List<Igrac> PlaviTim { get; set; } = new List<Igrac>();
         private static List<Igrac> CrveniTim { get; set; } = new List<Igrac>();
+        private static List<Guid> PikovaniHeroji { get; set; } = new List<Guid>();
 
         public TimoviRepository() { }
         public bool DodajUPlaviTim(Igrac x)
@@ -20,7 +21,17 @@ namespace Domain.Repositories.TimoviRepository
                 if (p.getIme() == x.getIme() || p.getIdHeroja() == x.getIdHeroja()) return false;
             }
             PlaviTim.Add(x);
+            PikovaniHeroji.Add(x.getIdHeroja());
             return true;
+        }
+
+        public bool PronadjiHeroja(Guid x)
+        {
+            foreach(Guid g in PikovaniHeroji)
+            {
+                if(g == x) return true;
+            }
+            return false;
         }
 
         public bool DodajUCrveniTim(Igrac x)
@@ -30,6 +41,7 @@ namespace Domain.Repositories.TimoviRepository
                 if (p.getIme() == x.getIme() || p.getIdHeroja() == x.getIdHeroja()) return false;
             }
             CrveniTim.Add(x);
+            PikovaniHeroji.Add(x.getIdHeroja());
             return true;
         }
 
@@ -41,6 +53,27 @@ namespace Domain.Repositories.TimoviRepository
         public List<Igrac> getPlaviTim()
         {
             return PlaviTim;
+        }
+
+        public bool UkloniIgraca(Guid x)
+        {
+            foreach(Igrac p in CrveniTim)
+            {
+                if(p.getIdHeroja() == x)
+                {
+                    CrveniTim.Remove(p);
+                    return true;
+                }
+            }
+            foreach(Igrac p in PlaviTim)
+            {
+                if(p.getIdHeroja() == x)
+                {
+                    PlaviTim.Remove(p);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
