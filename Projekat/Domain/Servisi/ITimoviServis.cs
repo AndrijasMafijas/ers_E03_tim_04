@@ -1,4 +1,6 @@
 ﻿using Domain.Modeli;
+using Domain.Repositories.HerojiRepository;
+using Domain.Repositories.TimoviRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +13,13 @@ namespace Domain.Servisi
     {
         bool DodavanjeIgracaUPlaviTim(Igrac x);
         bool DodavanjeIgracaUCrveniTim(Igrac x);
+
+        public Guid PronadjiHeroja(string x);
+
+        public string IspisiListuHeroja();
+
+
+        public bool PronadjiHeroja(Guid g);
+        
     }
 }

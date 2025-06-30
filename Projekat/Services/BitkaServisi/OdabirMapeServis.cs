@@ -1,5 +1,6 @@
 ﻿using Domain.Modeli;
 using Domain.Repositories.MapeRepository;
+using Domain.Servisi;
 using Domain.Repositories.ProdavnicaRepository;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Services.BitkaServisi
 {
-    public class OdabirMapeServis
+    public class OdabirMapeServis : IOdabirMapeServis
     {
         public OdabirMapeServis() { }
         public Mapa PronadjiMapu(string ime)

@@ -1,4 +1,5 @@
 ﻿using Domain.Modeli;
+using Domain.Servisi;
 using Services.BitkaServisi;
 using Services.ProdavnicaServisi;
 
@@ -18,7 +19,7 @@ namespace Presentation.GlavniMeni
             {
                 Console.WriteLine("Enter map name: ");
                 string nazivMape = Console.ReadLine();
-                OdabirMapeServis mapaServis = new OdabirMapeServis();
+                IOdabirMapeServis mapaServis = new OdabirMapeServis();
                 if (nazivMape == string.Empty) continue;
                 m = mapaServis.PronadjiMapu(nazivMape);
                 if (m.NazivMape == string.Empty)
@@ -36,8 +37,8 @@ namespace Presentation.GlavniMeni
             {
                 Console.WriteLine("Enter market id: ");
                 string idProdavnice = Console.ReadLine();
-                OdabirMapeServis mapaServis = new OdabirMapeServis();
-                OdabirProdavniceServis ops = new OdabirProdavniceServis();
+                IOdabirMapeServis mapaServis = new OdabirMapeServis();
+                IOdabirProdavniceServis ops = new OdabirProdavniceServis();
                 if (idProdavnice == string.Empty) continue;
                 p = ops.PronadjiProdavnicu(Convert.ToInt32(idProdavnice));
                 if (p.ID == 0)

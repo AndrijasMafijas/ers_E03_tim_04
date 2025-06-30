@@ -1,4 +1,5 @@
-﻿using Services.BitkaServisi;
+﻿using Domain.Servisi;
+using Services.BitkaServisi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Presentation.GlavniMeni
     {
         public static void PokreniSimulacijuBitke(int IdProdavnice, string IdMape)
         {
-            SimulacijaBitkeServis sbs = new SimulacijaBitkeServis();
+            ISimulacijaBitkeServis sbs = new SimulacijaBitkeServis();
             int duzinaTrajanjaBitke = sbs.GenerisiVremeTrajanjaBitke();
             Console.WriteLine("Now the battle will begin!");
             float duzinaTB = Convert.ToSingle(duzinaTrajanjaBitke);

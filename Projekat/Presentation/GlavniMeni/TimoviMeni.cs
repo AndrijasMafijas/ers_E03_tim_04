@@ -1,4 +1,5 @@
 ﻿using Domain.Modeli;
+using Domain.Servisi;
 using Services.BitkaServisi;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Presentation.GlavniMeni
             }
             dobarUnos = false;
             //dodavanje u plavi tim
-            TimoviServis ts = new TimoviServis();
+            ITimoviServis ts = new TimoviServis();
             Console.WriteLine(ts.IspisiListuHeroja());
             Console.WriteLine("Now you are entering names and heroes for team blue: ");
             for(int i = 0; i < brojka; )

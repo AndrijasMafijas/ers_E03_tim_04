@@ -1,4 +1,5 @@
-﻿using Services.BitkaServisi;
+﻿using Domain.Servisi;
+using Services.BitkaServisi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Presentation.GlavniMeni
         public static void StatistikaBitke()
         {
             bool dobarUnos = false;
-            StatistikaBitkeServis sbs = new StatistikaBitkeServis();
+            IStatistikaBitkeServis sbs = new StatistikaBitkeServis();
             Console.WriteLine("\nThe battle is over , please enter 1 if you want to see statistics in this window or 2 if you want to see it in txt file.");
             while (!dobarUnos)
             {

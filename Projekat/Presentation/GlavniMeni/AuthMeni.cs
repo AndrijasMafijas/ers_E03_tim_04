@@ -1,4 +1,5 @@
-﻿using Services.AuthServisi;
+﻿using Domain.Servisi;
+using Services.AuthServisi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Presentation.GlavniMeni
         public AuthMeni() { }
         public static void Autentifikacija()
         {
-            AuthServis auth = new AuthServis();
+            IAuthServis auth = new AuthServis();
             bool ulogovan = false;
             Console.WriteLine("Welcome!");
             //testiranje (radi)

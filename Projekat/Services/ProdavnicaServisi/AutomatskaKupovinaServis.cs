@@ -2,6 +2,7 @@
 using Domain.PomocneMetode;
 using Domain.Repositories.HerojiRepository;
 using Domain.Repositories.ProdavnicaRepository;
+using Domain.Servisi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Services.ProdavnicaServisi
 {
-    public class AutomatskaKupovinaServis
+    public class AutomatskaKupovinaServis : IAutomatskaKupovinaServis
     {
         public string ProveriNovac(Igrac pobednik,int IdProdavnice)
         {

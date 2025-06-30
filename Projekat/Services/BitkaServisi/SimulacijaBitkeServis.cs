@@ -1,5 +1,6 @@
 ﻿using Domain.Modeli;
 using Domain.PomocneMetode;
+using Domain.Servisi;
 using Domain.Repositories.HerojiRepository;
 using Domain.Repositories.MapeRepository;
 using Domain.Repositories.ProdavnicaRepository;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Services.BitkaServisi
 {
-    public class SimulacijaBitkeServis
+    public class SimulacijaBitkeServis : ISimulacijaBitkeServis
     {
         public int GenerisiVremeTrajanjaBitke()
         {
@@ -63,13 +64,13 @@ namespace Services.BitkaServisi
                 Heroj pobednikovHeroj = heroji.PronadjiPoId(pobednik.getIdHeroja());
                 Heroj gubitnikovHeroj = heroji.PronadjiPoId(gubitnik.getIdHeroja());
 
-                if(pobednikovHeroj.JacinaNapada > gubitnikovHeroj.ZivotniPoeni)
+                if(pobednikovHeroj.JacinaNapada >= gubitnikovHeroj.ZivotniPoeni)
                 {
                     x += pobednik.getIme() + " eliminated " + gubitnik.getIme() + " and earned 300 gold!\n";
                     heroji.UkloniHeroja(gubitnik.getIdHeroja());
                     timovi.UkloniIgraca(gubitnik.getIdHeroja());
                     pobednikovHeroj.TrenutnoNovcica += 300;
-                    AutomatskaKupovinaServis aks = new AutomatskaKupovinaServis();
+                    IAutomatskaKupovinaServis aks = new AutomatskaKupovinaServis();
                     aks.ProveriNovac(pobednik, IdProdavnice);
                 }
                 else
@@ -89,7 +90,7 @@ namespace Services.BitkaServisi
                     x += pobednik.getIme() + " has slained an entity and gained " + brojka + " gold.\n";
                     Heroj pobednikovHeroj = heroji.PronadjiPoId(pobednik.getIdHeroja());
                     pobednikovHeroj.TrenutnoNovcica += brojka;
-                    AutomatskaKupovinaServis aks = new AutomatskaKupovinaServis();
+                    IAutomatskaKupovinaServis aks = new AutomatskaKupovinaServis();
                     aks.ProveriNovac(pobednik, IdProdavnice);
                 }
                 else
