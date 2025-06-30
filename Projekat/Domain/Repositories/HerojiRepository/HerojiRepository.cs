@@ -11,18 +11,19 @@ namespace Domain.Repositories.HerojiRepository
         {
             Heroji = new List<Heroj>()
             {
-                new Heroj("Veliki Carobnjak Emil", 60, 90, 0),
-                new Heroj("Ratnik Srebrne Senke", 100, 40, 0),
-                new Heroj("Lovac iz Trnave", 80, 60, 0),
-                new Heroj("Gvozdeni Vitez", 120, 30, 0),
-                new Heroj("Zmajcar Zara", 90, 70, 0),
-                new Heroj("Sumska Vestica Radojka", 70, 100, 0),
-                new Heroj("Vuk Samotnjak", 110, 20, 0),
-                new Heroj("Gospodar Oluje", 85, 95, 0),
-                new Heroj("Krvavi Osvetnik", 95, 50, 0),
-                new Heroj("Nocni Strazar", 105, 45, 0)
+                new Heroj("Garen", 39, 122, 0),
+                new Heroj("Darius", 65, 54, 0),
+                new Heroj("Jax", 52, 81, 0),
+                new Heroj("Ornn", 78, 41, 0),
+                new Heroj("Zed", 59, 95, 0),
+                new Heroj("Morgana", 46, 135, 0),
+                new Heroj("Rex", 72, 27, 0),
+                new Heroj("Sylas", 55, 128, 0),
+                new Heroj("Kayn", 61, 68, 0),
+                new Heroj("Nocturne", 68, 61, 0)
             };
         }
+        public List<Heroj> VratiSveHeroje() => Heroji;
 
         public string IspisiListu()
         {
@@ -74,30 +75,16 @@ namespace Domain.Repositories.HerojiRepository
             Heroji.Add(heroj);
             return true;
         }
-
-        public bool UkloniHeroja(Guid IdHeroja)
+        public bool HerojUbijen(Guid IdHeroja)
         {
             Heroj heroj = PronadjiPoId(IdHeroja);
             if (heroj.NazivHeroja == string.Empty) return false;
-            bool postoji = false;
-            if (heroj is not Heroj)
+            if (heroj.NazivHeroja == string.Empty)
             {
                 return false;
             }
-            foreach (Heroj h in Heroji)
-            {
-                if (h.NazivHeroja == heroj.NazivHeroja)
-                    postoji = true;
-            }
-            if (postoji)
-            {
-                Heroji.Remove(heroj);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            heroj.setJelMrtav(true);
+            return true;
         }
     }
 }

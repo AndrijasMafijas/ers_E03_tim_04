@@ -10,10 +10,10 @@ namespace Services.AuthServisi
 {
     public class AuthServis : IAuthServis
     {
+        IKorisnickiRepository korisnickiRepository = new KorisnickiRepository();
         public AuthServis() { }
         public bool Autentifikacija(string username,string password) {
             bool ulogovan = false;
-            IKorisnickiRepository korisnickiRepository = new KorisnickiRepository();
             if (korisnickiRepository.PronadjiKorisnika(username, password)) ulogovan = true;
             return ulogovan;
         }

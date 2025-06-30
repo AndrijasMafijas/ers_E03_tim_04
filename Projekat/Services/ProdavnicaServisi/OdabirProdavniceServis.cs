@@ -11,9 +11,9 @@ namespace Services.ProdavnicaServisi
 {
     public class OdabirProdavniceServis : IOdabirProdavniceServis
     {
+        IProdavnicaRepository prodavnicaRepository = new ProdavnicaRepository();
         public Prodavnica PronadjiProdavnicu(int id)
         {
-            IProdavnicaRepository prodavnicaRepository = new ProdavnicaRepository();
             return prodavnicaRepository.PronadjiProdavnicuPoIdu(id);
         }
     }

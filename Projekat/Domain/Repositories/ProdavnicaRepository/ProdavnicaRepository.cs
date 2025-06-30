@@ -16,7 +16,7 @@ namespace Domain.Repositories.ProdavnicaRepository
                 })
             };
         }
-
+        public List<Prodavnica> VratiSveProdavnice() => Prodavnice;
         public bool DodajProdavnicu(Prodavnica prodavnica)
         {
             if (prodavnica is not Prodavnica)
@@ -37,6 +37,46 @@ namespace Domain.Repositories.ProdavnicaRepository
                 if (p.ID == id) return p;
             }
             return new Prodavnica();
+        }
+
+        public bool prodajOruzje(Oruzje a, int idProdavnice)
+        {
+            foreach(Prodavnica p in Prodavnice)
+            {
+                if(p.ID == idProdavnice)
+                {
+                    foreach(Oruzje o in p.listaOruzja)
+                    {
+                        if(o.nazivOruzja == a.nazivOruzja && o.DostupnoZaKupovinu > 0)
+                        {
+                            o.DostupnoZaKupovinu--;
+                            if(o.DostupnoZaKupovinu == 0) p.listaOruzja.Remove(o);
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool prodajNapitak(Napitak a, int idProdavnice)
+        {
+            foreach (Prodavnica p in Prodavnice)
+            {
+                if (p.ID == idProdavnice)
+                {
+                    foreach (Napitak o in p.listaNapitaka)
+                    {
+                        if (o.NazivNapitka == a.NazivNapitka && o.DostupnoZaKupovinu > 0)
+                        {
+                            o.DostupnoZaKupovinu--;
+                            if (o.DostupnoZaKupovinu == 0) p.listaNapitaka.Remove(o);
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
         }
     }
 }

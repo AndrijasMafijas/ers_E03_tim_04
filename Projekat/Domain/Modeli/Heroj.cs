@@ -14,11 +14,23 @@ namespace Domain.Modeli
         public int ZivotniPoeni { get; set; } = 0;
         public int JacinaNapada { get; set; } = 0;
         public int TrenutnoNovcica { get; set; } = 0;
+        private bool JelMrtav {  get; set; } = false;
 
         public Heroj() { 
         
         }
 
+        public bool setJelMrtav(bool Mrtav)
+        {
+            this.JelMrtav = Mrtav;
+            this.ZivotniPoeni = 0;
+            return true;
+        }
+
+        public bool getJelMrtav()
+        {
+            return this.JelMrtav;
+        }
         public Heroj (string nazivHeroja, int zivotniPoeni, int jacinaNapada, int trenutnoNovcica)
         {
             NazivHeroja = nazivHeroja;
@@ -26,8 +38,7 @@ namespace Domain.Modeli
             JacinaNapada = jacinaNapada;
             TrenutnoNovcica = trenutnoNovcica;
             Id = Guid.NewGuid();
+            this.JelMrtav = false;
         }
-
-
     }
 }

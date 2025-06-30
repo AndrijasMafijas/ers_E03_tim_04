@@ -8,7 +8,7 @@ namespace Domain.Servisi
 {
     public interface IStatistikaBitkeServis
     {
-        public void IspisiStatistikuBitke();
+        public string IspisiStatistikuBitke(int idProdavnice, string nazivMape);
 
         public bool IspisiUDatoteku(string nazivDatoteke);
     }

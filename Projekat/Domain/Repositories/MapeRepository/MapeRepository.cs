@@ -13,7 +13,7 @@ namespace Domain.Repositories.MapeRepository
                 new Mapa("Test",Enumeracija.Tip_Mape.LETNJA,10,"Orlovi","Tigrovi",10)
             };
         }
-
+        public List<Mapa> VratiSveMape() => Mape;
         public bool DodajMapu(Mapa map)
         {
             if (map is not Mapa)

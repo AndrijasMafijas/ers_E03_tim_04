@@ -13,13 +13,13 @@ namespace Services.ProdavnicaServisi
 {
     public class AutomatskaKupovinaServis : IAutomatskaKupovinaServis
     {
+        IHerojiRepository heroji = new HerojiRepository();
+        IProdavnicaRepository prodavnice = new ProdavnicaRepository();
         public string ProveriNovac(Igrac pobednik,int IdProdavnice)
         {
-            IHerojiRepository heroji = new HerojiRepository();
-            IProdavnicaRepository prodavnice = new ProdavnicaRepository();
             string x = "";
             Heroj pobednikovHeroj = heroji.PronadjiPoId(pobednik.getIdHeroja());
-            if (pobednikovHeroj.TrenutnoNovcica >= 500)
+            while(pobednikovHeroj.TrenutnoNovcica >= 500)
             {
                 Prodavnica p = prodavnice.PronadjiProdavnicuPoIdu(IdProdavnice);
                 //opet generisem da li ce da kupi oruzje ili napitak
@@ -27,14 +27,26 @@ namespace Services.ProdavnicaServisi
                 if (opcija3 == 1)
                 {
                     Oruzje o = GeneratorNasumicnogElementaListe.OdaberiNasumicnoOruzje(p.listaOruzja);
-                    pobednikovHeroj.JacinaNapada += o.PojacanjeNapada;
-                    x += "\n" + pobednik.getIme() + " has purchased " + o.nazivOruzja + " and his current attack power is " + pobednikovHeroj.JacinaNapada;
+                    if (prodavnice.prodajOruzje(o, IdProdavnice))
+                    {
+                        pobednikovHeroj.JacinaNapada += o.PojacanjeNapada;
+                        x += "\n" + pobednik.getIme() + " has purchased " + o.nazivOruzja + " and his current attack power is " + pobednikovHeroj.JacinaNapada;
+                        p.UkupnoProdato += o.Cena;
+                        pobednikovHeroj.TrenutnoNovcica -= o.Cena;
+                    }
+                    else continue;
                 }
                 else
                 {
                     Napitak n = GeneratorNasumicnogElementaListe.OdaberiNasumicniNapitak(p.listaNapitaka);
-                    pobednikovHeroj.JacinaNapada += n.PojacanjeNapada;
-                    x += "\n" + pobednik.getIme() + " has purchased " + n.NazivNapitka + " and his current attack power is " + pobednikovHeroj.JacinaNapada;
+                    if (prodavnice.prodajNapitak(n, IdProdavnice))
+                    {
+                        pobednikovHeroj.JacinaNapada += n.PojacanjeNapada;
+                        x += "\n" + pobednik.getIme() + " has purchased " + n.NazivNapitka + " and his current attack power is " + pobednikovHeroj.JacinaNapada;
+                        p.UkupnoProdato += n.Cena;
+                        pobednikovHeroj.TrenutnoNovcica -= n.Cena;
+                    }
+                    else continue;
                 }
             }
             return x;

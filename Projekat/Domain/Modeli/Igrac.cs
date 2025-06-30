@@ -8,7 +8,7 @@ namespace Domain.Modeli
 {
     public class Igrac
     {
-        private string Ime {  get; set; }
+        private string Ime {  get; set; } = string.Empty;
         private Guid IdHeroja { get; set; }
         public Igrac() { }
 

@@ -9,9 +9,9 @@ namespace Services.AuthServisi
 {
     public class AuthDodavanjeKorisnika
     {
+        IKorisnickiRepository korisnickiRepository = new KorisnickiRepository();
         public bool dodajKorisnika(string username, string password)
         {
-            IKorisnickiRepository korisnickiRepository = new KorisnickiRepository();
             return korisnickiRepository.DodajKorisnika(username, password);
         }
     }

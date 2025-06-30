@@ -12,10 +12,10 @@ namespace Services.BitkaServisi
 {
     public class OdabirMapeServis : IOdabirMapeServis
     {
+        IMapeRepository mapeRepository = new MapeRepository();
         public OdabirMapeServis() { }
         public Mapa PronadjiMapu(string ime)
         {
-            IMapeRepository mapeRepository = new MapeRepository();
             return mapeRepository.PronadjiMapuPoNazivu(ime);
         }
         

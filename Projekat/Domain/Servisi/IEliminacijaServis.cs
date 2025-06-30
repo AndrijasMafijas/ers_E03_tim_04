@@ -9,8 +9,8 @@ namespace Domain.Servisi
 {
     public interface IEliminacijaServis
     {
-        public bool EliminacijaHeroja(Guid pobednik, Guid gubitnik);
+        public bool EliminacijaHeroja(Guid pobednik, Guid gubitnik );
 
-        public bool EliminacijaEntiteta(Guid pobednik);
+        public bool EliminacijaEntiteta(Guid pobednik, int brojka);
     }
 }

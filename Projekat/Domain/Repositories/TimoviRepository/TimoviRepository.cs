@@ -1,4 +1,5 @@
 ﻿using Domain.Modeli;
+using Domain.Repositories.HerojiRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,27 +54,6 @@ namespace Domain.Repositories.TimoviRepository
         public List<Igrac> getPlaviTim()
         {
             return PlaviTim;
-        }
-
-        public bool UkloniIgraca(Guid x)
-        {
-            foreach(Igrac p in CrveniTim)
-            {
-                if(p.getIdHeroja() == x)
-                {
-                    CrveniTim.Remove(p);
-                    return true;
-                }
-            }
-            foreach(Igrac p in PlaviTim)
-            {
-                if(p.getIdHeroja() == x)
-                {
-                    PlaviTim.Remove(p);
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

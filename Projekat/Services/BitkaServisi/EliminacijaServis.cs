@@ -1,18 +1,20 @@
 ﻿using Domain.Modeli;
-using Domain.Servisi;
+using Domain.PomocneMetode;
 using Domain.Repositories.HerojiRepository;
+using Domain.Repositories.TimoviRepository;
+using Domain.Servisi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.PomocneMetode;
 
 namespace Services.BitkaServisi
 {
     public class EliminacijaServis : IEliminacijaServis
     {
         IHerojiRepository _herojiRepository = new HerojiRepository();
+        ITimoviRepository timovi = new TimoviRepository();
         //GeneratorNovcica generator = new GeneratorNovcica();
         public bool EliminacijaHeroja(Guid pobednik,Guid gubitnik)
         {
@@ -26,17 +28,17 @@ namespace Services.BitkaServisi
             {
                 return false;
             }
-            if(!_herojiRepository.UkloniHeroja(gubitnik))
+            if(!_herojiRepository.HerojUbijen(gubitnik))
                 return false;
             pobednikk.TrenutnoNovcica += 300;
             return true;
         }
-        public bool EliminacijaEntiteta(Guid pobednik)
+        public bool EliminacijaEntiteta(Guid pobednik, int brojka)
         {
             Heroj heroj = _herojiRepository.PronadjiPoId(pobednik);
             if (heroj.NazivHeroja != string.Empty)
             {
-                heroj.TrenutnoNovcica += GeneratorNovcica.EliminacijaEntiteta();
+                heroj.TrenutnoNovcica += brojka;
                 return true;
             }
             return false;

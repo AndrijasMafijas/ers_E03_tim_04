@@ -6,5 +6,6 @@ namespace Domain.Repositories.MapeRepository
     {
         bool DodajMapu(Mapa map);
         Mapa PronadjiMapuPoNazivu(string nazivMape);
+        public List<Mapa> VratiSveMape();
     }
 }

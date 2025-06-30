@@ -7,10 +7,10 @@ public class Program
     {
         AuthMeni.Autentifikacija();
         int brojEntiteta = EntitetMeni.OdabirEntiteta();
-        string IdMape = "";
-        int IdProdavnice = MapaMeni.OdabirMape(brojEntiteta,ref IdMape);
+        string nazivMape = "";
+        int IdProdavnice = MapaMeni.OdabirMape(brojEntiteta,ref nazivMape);
         TimoviMeni.DodavanjeIgraca();
-        SimulacijaBitkeMeni.PokreniSimulacijuBitke(IdProdavnice , IdMape);
-        StatistikaBitkeMeni.StatistikaBitke();
+        SimulacijaBitkeMeni.PokreniSimulacijuBitke(IdProdavnice , nazivMape);
+        StatistikaBitkeMeni.StatistikaBitke(IdProdavnice, nazivMape);
     }
 }

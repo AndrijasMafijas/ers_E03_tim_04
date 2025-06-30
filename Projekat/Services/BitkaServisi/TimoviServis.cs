@@ -12,32 +12,29 @@ namespace Services.BitkaServisi
 {
     public class TimoviServis : ITimoviServis
     {
+        ITimoviRepository timovi = new TimoviRepository();
+        IHerojiRepository heroji = new HerojiRepository();
         public bool DodavanjeIgracaUPlaviTim(Igrac x) 
         {
-            ITimoviRepository timovi = new TimoviRepository();
             return timovi.DodajUPlaviTim(x);
         }
         public bool DodavanjeIgracaUCrveniTim(Igrac x)
         {
-            ITimoviRepository timovi = new TimoviRepository();
             return timovi.DodajUCrveniTim(x);
         }
         public Guid PronadjiHeroja(string x)
         {
-            IHerojiRepository heroji = new HerojiRepository();
             Heroj h = heroji.PronadjiPoImenu(x);
             if (h.NazivHeroja != string.Empty) return h.Id;
             else return Guid.Empty;
         }
         public string IspisiListuHeroja()
         {
-            IHerojiRepository heroji = new HerojiRepository();
             return heroji.IspisiListu();
         }
 
         public bool PronadjiHeroja(Guid g)
         {
-            ITimoviRepository timovi = new TimoviRepository();
             return timovi.PronadjiHeroja(g);
         }
     }

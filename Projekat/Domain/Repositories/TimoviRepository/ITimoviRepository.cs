@@ -14,6 +14,5 @@ namespace Domain.Repositories.TimoviRepository
         List<Igrac> getCrveniTim();
         List<Igrac> getPlaviTim();
         bool PronadjiHeroja(Guid x);
-        bool UkloniIgraca(Guid x);
     }
 }

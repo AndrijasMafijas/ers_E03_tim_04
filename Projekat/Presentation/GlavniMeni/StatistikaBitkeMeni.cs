@@ -10,7 +10,7 @@ namespace Presentation.GlavniMeni
 {
     public class StatistikaBitkeMeni
     {
-        public static void StatistikaBitke()
+        public static void StatistikaBitke(int idProdavnice, string nazivMape)
         {
             bool dobarUnos = false;
             IStatistikaBitkeServis sbs = new StatistikaBitkeServis();
@@ -26,7 +26,8 @@ namespace Presentation.GlavniMeni
                 dobarUnos = true;
                 if(x == "1")
                 {
-                    sbs.IspisiStatistikuBitke();
+                    string ispis = sbs.IspisiStatistikuBitke(idProdavnice, nazivMape);
+                    Console.WriteLine(ispis);
                 }
                 else
                 {
