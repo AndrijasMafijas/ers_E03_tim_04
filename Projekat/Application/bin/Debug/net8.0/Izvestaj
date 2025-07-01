@@ -1,0 +1,27 @@
+===== BATTLE STATISTICS =====
+
+>>> RED TEAM:
+Player              Hero                              HP   ATK    Gold
+---------------------------------------------------------------------------
+Lazar               Jax                                0    81       0
+
+>>> BLUE TEAM:
+Player              Hero                              HP   ATK    Gold
+---------------------------------------------------------------------------
+Andrija             Zed                               59    95     300
+
+>>> MAP:
+Name           Type            Max Players
+---------------------------------------------
+Test           LETNJA                   10
+
+Red Team       Blue Team      Support entities
+---------------------------------------------
+Orlovi         Tigrovi                     10
+
+>>> SHOP:
+   ID
+------------------------------
+    1
+------------------------------
+TOTAL REVENUE:  0

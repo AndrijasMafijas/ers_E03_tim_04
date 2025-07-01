@@ -45,12 +45,12 @@ namespace Domain.Repositories.ProdavnicaRepository
             {
                 if(p.ID == idProdavnice)
                 {
-                    foreach(Oruzje o in p.listaOruzja)
+                    foreach(Oruzje o in p.ListaOruzja)
                     {
-                        if(o.nazivOruzja == a.nazivOruzja && o.DostupnoZaKupovinu > 0)
+                        if(o.NazivOruzja == a.NazivOruzja && o.DostupnoZaKupovinu > 0)
                         {
                             o.DostupnoZaKupovinu--;
-                            if(o.DostupnoZaKupovinu == 0) p.listaOruzja.Remove(o);
+                            if(o.DostupnoZaKupovinu == 0) p.ListaOruzja.Remove(o);
                             return true;
                         }
                     }
@@ -65,12 +65,12 @@ namespace Domain.Repositories.ProdavnicaRepository
             {
                 if (p.ID == idProdavnice)
                 {
-                    foreach (Napitak o in p.listaNapitaka)
+                    foreach (Napitak o in p.ListaNapitaka)
                     {
                         if (o.NazivNapitka == a.NazivNapitka && o.DostupnoZaKupovinu > 0)
                         {
                             o.DostupnoZaKupovinu--;
-                            if (o.DostupnoZaKupovinu == 0) p.listaNapitaka.Remove(o);
+                            if (o.DostupnoZaKupovinu == 0) p.ListaNapitaka.Remove(o);
                             return true;
                         }
                     }

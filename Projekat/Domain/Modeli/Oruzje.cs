@@ -9,11 +9,11 @@ namespace Domain.Modeli
 {
 	public class Oruzje : Ajtem
 	{
-        public string nazivOruzja { get; set; } = string.Empty;
+        public string NazivOruzja { get; set; } = string.Empty;
 
         public Oruzje(string NazivOruzja, int Cena, int PojacanjeNapada, int DostupnoZaKupovinu) : base(Cena, PojacanjeNapada,DostupnoZaKupovinu)
         {
-            nazivOruzja = NazivOruzja;
+            this.NazivOruzja = NazivOruzja;
         }
 	}
 }

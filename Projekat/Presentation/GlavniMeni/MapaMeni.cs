@@ -20,7 +20,7 @@ namespace Presentation.GlavniMeni
                 Console.WriteLine("Enter map name: ");
                 string nazivMape = Console.ReadLine();
                 IOdabirMapeServis mapaServis = new OdabirMapeServis();
-                if (nazivMape == string.Empty) continue;
+                if (string.IsNullOrWhiteSpace(nazivMape)) continue;
                 m = mapaServis.PronadjiMapu(nazivMape);
                 if (m.NazivMape == string.Empty)
                 {
@@ -39,8 +39,9 @@ namespace Presentation.GlavniMeni
                 string idProdavnice = Console.ReadLine();
                 IOdabirMapeServis mapaServis = new OdabirMapeServis();
                 IOdabirProdavniceServis ops = new OdabirProdavniceServis();
-                if (idProdavnice == string.Empty) continue;
-                p = ops.PronadjiProdavnicu(Convert.ToInt32(idProdavnice));
+                int probaj;
+                if (string.IsNullOrWhiteSpace(idProdavnice) || !int.TryParse(idProdavnice , out probaj)) continue;
+                p = ops.PronadjiProdavnicu(probaj);
                 if (p.ID == 0)
                 {
                     Console.WriteLine("Market with id " + idProdavnice + " doesn't exist.");

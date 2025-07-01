@@ -13,7 +13,11 @@ namespace Domain.Repositories.KorisnickiRepository
 
         static KorisnickiRepository()
         {
-            Korisnici = new List<Korisnik>();
+            Korisnici = new List<Korisnik>
+            {
+                new Korisnik("andrija","andrija"),
+                new Korisnik("stefan","stefan")
+            };
         }
 
         public bool PronadjiKorisnika(string username,string password)

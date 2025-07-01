@@ -12,7 +12,7 @@ namespace Services.ProdavnicaServisi
     {
         public IEnumerable<Oruzje> getListaOruzja(Prodavnica p)
         {
-            return p.listaOruzja;
+            return p.ListaOruzja;
         }
         public bool DodajOruzje(Prodavnica p, Oruzje x)
         {
@@ -20,14 +20,14 @@ namespace Services.ProdavnicaServisi
             {
                 return false;
             }
-            foreach (Oruzje y in p.listaOruzja)
+            foreach (Oruzje y in p.ListaOruzja)
             {
-                if (x.nazivOruzja == y.nazivOruzja)
+                if (x.NazivOruzja == y.NazivOruzja)
                 {
                     return false;
                 }
             }
-            p.listaOruzja.Add(x);
+            p.ListaOruzja.Add(x);
             return true;
         }
     }

@@ -12,7 +12,7 @@ namespace Services.ProdavnicaServisi
     {
         public IEnumerable<Napitak> getListaNapitaka(Prodavnica p)
         {
-            return p.listaNapitaka;
+            return p.ListaNapitaka;
         }
         public bool DodajNapitak(Prodavnica p, Napitak x)
         {
@@ -20,14 +20,14 @@ namespace Services.ProdavnicaServisi
             {
                 return false;
             }
-            foreach (Napitak y in p.listaNapitaka)
+            foreach (Napitak y in p.ListaNapitaka)
             {
                 if (x.NazivNapitka == y.NazivNapitka)
                 {
                     return false;
                 }
             }
-            p.listaNapitaka.Add(x);
+            p.ListaNapitaka.Add(x);
             return true;
         }
     }

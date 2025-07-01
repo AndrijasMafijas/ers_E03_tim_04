@@ -1,4 +1,5 @@
-﻿using Domain.Servisi;
+﻿using Domain.Repositories.TimoviRepository;
+using Domain.Servisi;
 using Services.BitkaServisi;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Presentation.GlavniMeni
         {
             bool dobarUnos = false;
             IStatistikaBitkeServis sbs = new StatistikaBitkeServis();
+            IHerojiServis hs = new HerojiServis();
             Console.WriteLine("\nThe battle is over , please enter 1 if you want to see statistics in this window or 2 if you want to see it in txt file.");
             while (!dobarUnos)
             {
@@ -33,12 +35,12 @@ namespace Presentation.GlavniMeni
                 {
                     Console.WriteLine("Please enter the name of txt file you would like to save statistics in: ");
                     string NazivDatoteke = Console.ReadLine();
-                    if(NazivDatoteke == string.Empty)
+                    if(string.IsNullOrWhiteSpace(NazivDatoteke))
                     {
                         Console.WriteLine("\nName of txt file is not valid!");
                         continue;
                     }
-                    sbs.IspisiUDatoteku(NazivDatoteke);
+                    sbs.IspisiUDatoteku(hs.GetCrveniTimHeroje(), hs.GetPlaviTimHeroje(), nazivMape, idProdavnice, NazivDatoteke);
                 }
             }
         }

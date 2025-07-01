@@ -16,9 +16,9 @@ namespace Presentation.GlavniMeni
             while (!dobarOdabir) {
                 Console.WriteLine("Enter 1 to manually enter entities, or 2 to generate them automatically.");
                 string linija = Console.ReadLine();
-                if (linija != string.Empty)
+                int odabir;
+                if (!string.IsNullOrWhiteSpace(linija) && int.TryParse(linija , out odabir))
                 {
-                    int odabir = Convert.ToInt32(linija);
                     if (odabir == 1 || odabir == 2)
                     {
                         dobarOdabir = true;
@@ -34,8 +34,8 @@ namespace Presentation.GlavniMeni
                             {
                                 Console.WriteLine("Please enter number of entities: (bettwen 1 and 10)");
                                 string linijaa = Console.ReadLine();
-                                if (linijaa == string.Empty || Convert.ToInt32(linijaa) < 1 || Convert.ToInt32(linijaa) > 10) continue;
-                                int brojEntiteta = Convert.ToInt32(linijaa);
+                                int brojEntiteta;
+                                if (string.IsNullOrWhiteSpace(linijaa) || !int.TryParse(linijaa , out brojEntiteta)|| Convert.ToInt32(linijaa) < 1 || Convert.ToInt32(linijaa) > 10) continue;
                                 return brojEntiteta;
                             }
                         }

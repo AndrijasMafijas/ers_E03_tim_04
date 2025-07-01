@@ -22,6 +22,11 @@ namespace Services.BitkaServisi
         IAutomatskaKupovinaServis aks;
         IEliminacijaServis es;
         IProveraKrajaBitkeServis pkbs;
+
+        public SimulacijaBitkeServis()
+        {
+        }
+
         public SimulacijaBitkeServis(IAutomatskaKupovinaServis aks, IEliminacijaServis es, IProveraKrajaBitkeServis pkbs)
         {
             this.aks = aks;

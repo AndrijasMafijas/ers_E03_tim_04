@@ -1,4 +1,5 @@
-﻿using Domain.Repositories.HerojiRepository;
+﻿using Domain.Modeli;
+using Domain.Repositories.HerojiRepository;
 using Domain.Repositories.MapeRepository;
 using Domain.Repositories.ProdavnicaRepository;
 using Domain.Repositories.TimoviRepository;
@@ -71,10 +72,15 @@ namespace Services.BitkaServisi
 
             return sb.ToString();
         }
-        
-        public bool IspisiUDatoteku(string nazivDatoteke)
+
+        public void IspisiUDatoteku(
+            List<Heroj> crveniTim,
+            List<Heroj> plaviTim,
+            string nazivMape,
+            int idProdavnice,
+            string imeFaila)
         {
-            return false;
+            File.WriteAllText(imeFaila, this.IspisiStatistikuBitke(idProdavnice, nazivMape));
         }
     
     }

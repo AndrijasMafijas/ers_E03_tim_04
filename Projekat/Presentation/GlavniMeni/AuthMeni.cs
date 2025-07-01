@@ -17,6 +17,7 @@ namespace Presentation.GlavniMeni
             bool ulogovan = false;
             Console.WriteLine("Welcome!");
             //testiranje (radi)
+            /*
             Console.WriteLine("For testing purposes please add 1 user first since we don't have DB...");
             bool dobarUnos = false;
             while (!dobarUnos)
@@ -35,7 +36,7 @@ namespace Presentation.GlavniMeni
                     Console.WriteLine("Please enter valid username and password");
                 }
             }
-
+            */
             while (!ulogovan)
             {
                 Console.WriteLine("Please enter your username: ");
@@ -43,10 +44,13 @@ namespace Presentation.GlavniMeni
                 Console.WriteLine("Please enter your password: ");
                 string password = Console.ReadLine();
 
-                if (auth.Autentifikacija(username, password))
+                if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
-                    ulogovan = true;
-                    Console.WriteLine("Login successful!");
+                    if (auth.Autentifikacija(username, password))
+                    {
+                        ulogovan = true;
+                        Console.WriteLine("Login successful!");
+                    }
                 }
                 else
                 {

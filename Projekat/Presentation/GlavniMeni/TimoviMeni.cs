@@ -20,8 +20,7 @@ namespace Presentation.GlavniMeni
             while (!dobarUnos) {
                 Console.WriteLine("Please enter how many players will each team contain: (bettwen 1 and 5)");
                 string broj = Console.ReadLine();
-                if (broj == string.Empty || int.Parse(broj) > 5 || int.Parse(broj) < 1) continue;
-                brojka = int.Parse(broj);
+                if (string.IsNullOrWhiteSpace(broj) || !int.TryParse(broj, out brojka) || int.Parse(broj) > 5 || int.Parse(broj) < 1) continue;
                 dobarUnos = true;
             }
             dobarUnos = false;
@@ -33,14 +32,14 @@ namespace Presentation.GlavniMeni
             {
                 Console.WriteLine((i+1) + " name: ");
                 string imeIgraca = Console.ReadLine();
-                if(imeIgraca == string.Empty || imeIgraca.Length > 15)
+                if(string.IsNullOrWhiteSpace(imeIgraca) || imeIgraca.Length > 15)
                 {
                     Console.WriteLine("Name must be valid");
                     continue;
                 }
                 Console.WriteLine((i+1) + " hero: ");
                 string imeHeroja = Console.ReadLine();
-                if (imeHeroja == string.Empty)
+                if (string.IsNullOrWhiteSpace(imeHeroja))
                 {
                     Console.WriteLine("Must enter a valid hero name");
                     continue;
@@ -67,14 +66,14 @@ namespace Presentation.GlavniMeni
             {
                 Console.WriteLine((i + 1) + " name: ");
                 string imeIgraca = Console.ReadLine();
-                if (imeIgraca == string.Empty || imeIgraca.Length > 15)
+                if (string.IsNullOrWhiteSpace(imeIgraca) || imeIgraca.Length > 15)
                 {
                     Console.WriteLine("Name must be valid");
                     continue;
                 }
                 Console.WriteLine((i+1) +" hero: ");
                 string imeHeroja = Console.ReadLine();
-                if (imeHeroja == string.Empty)
+                if (string.IsNullOrWhiteSpace(imeHeroja))
                 {
                     Console.WriteLine("Must enter a valid hero name");
                     continue;

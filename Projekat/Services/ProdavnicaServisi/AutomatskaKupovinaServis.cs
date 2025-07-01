@@ -26,11 +26,11 @@ namespace Services.ProdavnicaServisi
                 int opcija3 = GeneratorOpcija.GenerisiOpciju();
                 if (opcija3 == 1)
                 {
-                    Oruzje o = GeneratorNasumicnogElementaListe.OdaberiNasumicnoOruzje(p.listaOruzja);
+                    Oruzje o = GeneratorNasumicnogElementaListe.OdaberiNasumicnoOruzje(p.ListaOruzja);
                     if (prodavnice.prodajOruzje(o, IdProdavnice))
                     {
                         pobednikovHeroj.JacinaNapada += o.PojacanjeNapada;
-                        x += "\n" + pobednik.getIme() + " has purchased " + o.nazivOruzja + " and his current attack power is " + pobednikovHeroj.JacinaNapada;
+                        x += "\n" + pobednik.getIme() + " has purchased " + o.NazivOruzja + " and his current attack power is " + pobednikovHeroj.JacinaNapada;
                         p.UkupnoProdato += o.Cena;
                         pobednikovHeroj.TrenutnoNovcica -= o.Cena;
                     }
@@ -38,7 +38,7 @@ namespace Services.ProdavnicaServisi
                 }
                 else
                 {
-                    Napitak n = GeneratorNasumicnogElementaListe.OdaberiNasumicniNapitak(p.listaNapitaka);
+                    Napitak n = GeneratorNasumicnogElementaListe.OdaberiNasumicniNapitak(p.ListaNapitaka);
                     if (prodavnice.prodajNapitak(n, IdProdavnice))
                     {
                         pobednikovHeroj.JacinaNapada += n.PojacanjeNapada;
