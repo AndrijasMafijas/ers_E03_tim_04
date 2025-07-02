@@ -11,16 +11,16 @@ namespace Domain.Repositories.HerojiRepository
         {
             Heroji = new List<Heroj>()
             {
-                new Heroj("Garen", 39, 122, 0),
-                new Heroj("Darius", 65, 54, 0),
-                new Heroj("Jax", 52, 81, 0),
-                new Heroj("Ornn", 78, 41, 0),
-                new Heroj("Zed", 59, 95, 0),
-                new Heroj("Morgana", 46, 135, 0),
-                new Heroj("Rex", 72, 27, 0),
-                new Heroj("Sylas", 55, 128, 0),
-                new Heroj("Kayn", 61, 68, 0),
-                new Heroj("Nocturne", 68, 61, 0)
+                new Heroj("Garen", 39, 80, 0),
+                new Heroj("Darius", 65, 40, 0),
+                new Heroj("Jax", 52, 65, 0),
+                new Heroj("Ornn", 78, 40, 0),
+                new Heroj("Zed", 59, 70, 0),
+                new Heroj("Morgana", 46, 75, 0),
+                new Heroj("Rex", 72, 30, 0),
+                new Heroj("Sylas", 55, 60, 0),
+                new Heroj("Kayn", 61, 50, 0),
+                new Heroj("Nocturne", 68, 45, 0)
             };
         }
         public List<Heroj> VratiSveHeroje() => Heroji;
@@ -83,7 +83,8 @@ namespace Domain.Repositories.HerojiRepository
             {
                 return false;
             }
-            heroj.setJelMrtav(true);
+            heroj.JelMrtav = true;
+            heroj.ZivotniPoeni = 0;
             return true;
         }
     }

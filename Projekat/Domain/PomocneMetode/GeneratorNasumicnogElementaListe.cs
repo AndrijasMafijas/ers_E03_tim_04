@@ -10,16 +10,15 @@ namespace Domain.PomocneMetode
 {
     public class GeneratorNasumicnogElementaListe
     {
-        
+        static IHerojiRepository heroji = new HerojiRepository();
         public static Igrac OdaberiNasumicnogZivogIgraca(List<Igrac> lista)
         {
             while (true)
             {
-                IHerojiRepository heroji = new HerojiRepository();
                 Random rnd = new Random();
                 int index = rnd.Next(lista.Count);
                 Heroj h = heroji.PronadjiPoId(lista[index].getIdHeroja());
-                if (!h.getJelMrtav())
+                if (!h.JelMrtav)
                     return lista[index];
                 else continue;
             }

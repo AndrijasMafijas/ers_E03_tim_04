@@ -12,8 +12,6 @@ namespace Domain.Servisi
         public string IspisiStatistikuBitke(int idProdavnice, string nazivMape);
 
         public void IspisiUDatoteku(
-                List<Heroj> crveniTim,
-                List<Heroj> plaviTim,
                 string nazivMape,
                 int idProdavnice,
                 string putanjaDoFajla);

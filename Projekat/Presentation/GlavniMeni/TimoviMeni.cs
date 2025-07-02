@@ -27,10 +27,10 @@ namespace Presentation.GlavniMeni
             //dodavanje u plavi tim
             ITimoviServis ts = new TimoviServis();
             Console.WriteLine(ts.IspisiListuHeroja());
-            Console.WriteLine("Now you are entering names and heroes for team blue: ");
+            Console.WriteLine("\nNow you are entering names and heroes for team blue: \n");
             for(int i = 0; i < brojka; )
             {
-                Console.WriteLine((i+1) + " name: ");
+                Console.WriteLine((i+1) + ". player name: ");
                 string imeIgraca = Console.ReadLine();
                 if(string.IsNullOrWhiteSpace(imeIgraca) || imeIgraca.Length > 15)
                 {
@@ -60,11 +60,11 @@ namespace Presentation.GlavniMeni
             }
 
             //dodavanje u crveni tim
-            Console.WriteLine("Now you are entering names and heroes for team red: ");
+            Console.WriteLine("\nNow you are entering names and heroes for team red: \n");
             Console.WriteLine(ts.IspisiListuHeroja());
             for (int i = 0; i < brojka;)
             {
-                Console.WriteLine((i + 1) + " name: ");
+                Console.WriteLine((i + 1) + ". player name: ");
                 string imeIgraca = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(imeIgraca) || imeIgraca.Length > 15)
                 {

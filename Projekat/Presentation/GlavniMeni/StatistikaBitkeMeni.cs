@@ -40,7 +40,7 @@ namespace Presentation.GlavniMeni
                         Console.WriteLine("\nName of txt file is not valid!");
                         continue;
                     }
-                    sbs.IspisiUDatoteku(hs.GetCrveniTimHeroje(), hs.GetPlaviTimHeroje(), nazivMape, idProdavnice, NazivDatoteke);
+                    sbs.IspisiUDatoteku(nazivMape, idProdavnice, NazivDatoteke);
                 }
             }
         }

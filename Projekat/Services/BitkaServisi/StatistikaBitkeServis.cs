@@ -74,8 +74,6 @@ namespace Services.BitkaServisi
         }
 
         public void IspisiUDatoteku(
-            List<Heroj> crveniTim,
-            List<Heroj> plaviTim,
             string nazivMape,
             int idProdavnice,
             string imeFaila)

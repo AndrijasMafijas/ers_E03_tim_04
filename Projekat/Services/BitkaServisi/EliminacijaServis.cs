@@ -14,7 +14,6 @@ namespace Services.BitkaServisi
     public class EliminacijaServis : IEliminacijaServis
     {
         IHerojiRepository _herojiRepository = new HerojiRepository();
-        ITimoviRepository timovi = new TimoviRepository();
         //GeneratorNovcica generator = new GeneratorNovcica();
         public bool EliminacijaHeroja(Guid pobednik,Guid gubitnik)
         {

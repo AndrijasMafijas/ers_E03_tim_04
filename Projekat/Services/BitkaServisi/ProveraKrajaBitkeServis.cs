@@ -34,7 +34,7 @@ namespace Services.BitkaServisi
             {
                 foreach(Heroj h in heroji.VratiSveHeroje())
                 {
-                    if(p.getIdHeroja() == h.Id && !h.getJelMrtav())
+                    if(p.getIdHeroja() == h.Id && !h.JelMrtav)
                     {
                         broj++;
                     }
@@ -49,7 +49,7 @@ namespace Services.BitkaServisi
             {
                 foreach (Heroj h in heroji.VratiSveHeroje())
                 {
-                    if (p.getIdHeroja() == h.Id && !h.getJelMrtav())
+                    if (p.getIdHeroja() == h.Id && !h.JelMrtav)
                     {
                         broj++;
                     }
