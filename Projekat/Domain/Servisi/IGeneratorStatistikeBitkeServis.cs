@@ -1,5 +1,4 @@
-﻿using Domain.Modeli;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Servisi
 {
-    public interface IOdabirMapeServis
+    public interface IGeneratorStatistikeBitkeServis
     {
-        public Mapa PronadjiMapu(string ime);
+        string IspisiStatistikuBitke(int idProdavnice, string nazivMape);
     }
 }

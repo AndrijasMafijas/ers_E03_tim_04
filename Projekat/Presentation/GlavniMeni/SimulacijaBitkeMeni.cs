@@ -2,10 +2,6 @@
 using Services.BitkaServisi;
 using Services.ProdavnicaServisi;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Presentation.GlavniMeni
 {
@@ -16,21 +12,48 @@ namespace Presentation.GlavniMeni
             IAutomatskaKupovinaServis aks = new AutomatskaKupovinaServis();
             IEliminacijaServis es = new EliminacijaServis();
             IProveraKrajaBitkeServis ipkbs = new ProveraKrajaBitkeServis();
-            ISimulacijaBitkeServis sbs = new SimulacijaBitkeServis(aks,es,ipkbs);
+            ISimulacijaBitkeServis sbs = new SimulacijaBitkeServis(aks, es, ipkbs);
+
             int duzinaTrajanjaBitke = sbs.GenerisiVremeTrajanjaBitke();
-            Console.WriteLine("Now the battle will begin!");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n****************************************");
+            Console.WriteLine("         NOW THE BATTLE WILL BEGIN!      ");
+            Console.WriteLine("****************************************\n");
+            Console.ResetColor();
+
             float duzinaTB = Convert.ToSingle(duzinaTrajanjaBitke);
-            //ovo predstavlja koliko dogadjaja ce se desiti maksimalno u toku borbe
-            for (int i = 0; i < 10; i++)
+
+            for (int i = 0; i < 20; i++)
             {
                 string ivent = sbs.SimulirajDogadjaj(duzinaTB, IdProdavnice, IdMape);
-                Console.WriteLine(ivent);
-                if (ivent.Contains("\n---------------Match Finished----------------\nBLUE TEAM WON!!!\n") ||
-                    ivent.Contains("\n---------------Match Finished----------------\nRED TEAM WON!!!\n"))
-                break;
-                
+
+                // Proveri odmah da li je utakmica završena
+                if (ivent.Contains("MATCH FINISHED"))
+                {
+                    // Ispiši događaj i odmah prekini
+                    Console.ForegroundColor = ivent.Contains("BLUE TEAM WON") ? ConsoleColor.Blue : ConsoleColor.Red;
+                    Console.WriteLine(ivent);
+                    Console.ResetColor();
+                    break;
+                }
+
+                foreach (var line in ivent.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    if (line.Contains("eliminated") || line.Contains("gained") || line.Contains("damaged"))
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    else
+                        Console.ResetColor();
+
+                    Console.WriteLine(line);
+                }
+
+                Console.ResetColor();
             }
-            Console.WriteLine("Kraj!");
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\n=== END OF THE BATTLE ===\n");
+            Console.ResetColor();
         }
     }
 }

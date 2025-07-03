@@ -35,5 +35,19 @@ namespace Services.BitkaServisi
                     if (i.getIdHeroja() == h.Id) igraniHeroji.Add(h);
             return igraniHeroji;
         }
+        public string IspisiListuHeroja()
+        {
+            return heroji.IspisiListu();
+        }
+        public bool PronadjiHeroja(Guid g)
+        {
+            return timovi.PronadjiHeroja(g);
+        }
+        public Guid PronadjiHeroja(string x)
+        {
+            Heroj h = heroji.PronadjiPoImenu(x);
+            if (h.NazivHeroja != string.Empty) return h.Id;
+            else return Guid.Empty;
+        }
     }
 }

@@ -19,7 +19,16 @@ namespace Domain.Modeli
         public Heroj() { 
         }
 
-        
+        public Heroj(Guid id , string nazivHeroja , int zivotniPoeni, int jacinaNapada, int trenutnoNovcica)
+        {
+            NazivHeroja = nazivHeroja;
+            Id = id;
+            ZivotniPoeni = zivotniPoeni;
+            JacinaNapada = jacinaNapada;
+            TrenutnoNovcica = trenutnoNovcica;
+            JelMrtav = false;
+        }
+
         public Heroj (string nazivHeroja, int zivotniPoeni, int jacinaNapada, int trenutnoNovcica)
         {
             NazivHeroja = nazivHeroja;

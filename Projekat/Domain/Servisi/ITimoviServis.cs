@@ -13,13 +13,5 @@ namespace Domain.Servisi
     {
         bool DodavanjeIgracaUPlaviTim(Igrac x);
         bool DodavanjeIgracaUCrveniTim(Igrac x);
-
-        public Guid PronadjiHeroja(string x);
-
-        public string IspisiListuHeroja();
-
-
-        public bool PronadjiHeroja(Guid g);
-        
     }
 }

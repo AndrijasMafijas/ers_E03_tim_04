@@ -1,0 +1,31 @@
+===== BATTLE STATISTICS =====
+
+>>> RED TEAM:
+Player               Hero                               HP    ATK     Gold
+---------------------------------------------------------------------------
+Lazar                Ornn                                0     40      327
+Nikola               Jax                                 0     65        0
+Milisav              Sylas                               0     60        0
+
+>>> BLUE TEAM:
+Player               Hero                               HP    ATK     Gold
+---------------------------------------------------------------------------
+Andrija              Zed                                59     87      450
+Mare                 Kayn                               21     50        0
+Mile                 Morgana                             0     75      300
+
+>>> MAP:
+Name            Type             Max Players
+---------------------------------------------
+Test            LETNJA                    10
+
+Red Team        Blue Team       Support Entities
+---------------------------------------------
+Orlovi          Tigrovi                       9
+
+>>> SHOP:
+   ID
+------------------------------
+    1
+------------------------------
+TOTAL REVENUE:  150

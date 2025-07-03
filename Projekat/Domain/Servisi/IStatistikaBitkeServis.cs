@@ -9,8 +9,7 @@ namespace Domain.Servisi
 {
     public interface IStatistikaBitkeServis
     {
-        public string IspisiStatistikuBitke(int idProdavnice, string nazivMape);
-
+        string IspisiNaEkran(string nazivMape, int idProdavnice);
         public void IspisiUDatoteku(
                 string nazivMape,
                 int idProdavnice,

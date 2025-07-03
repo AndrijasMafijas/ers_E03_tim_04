@@ -1,46 +1,53 @@
-﻿using Domain.Repositories.TimoviRepository;
-using Domain.Servisi;
+﻿using Domain.Servisi;
 using Services.BitkaServisi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Presentation.GlavniMeni
+public class StatistikaBitkeMeni
 {
-    public class StatistikaBitkeMeni
+    public static void StatistikaBitke(int idProdavnice, string nazivMape)
     {
-        public static void StatistikaBitke(int idProdavnice, string nazivMape)
+        bool validInput = false;
+        IGeneratorStatistikeBitkeServis gbs = new GeneratorStatistikeBitkeServis();
+        IStatistikaBitkeServis sbs = new StatistikaBitkeServis(gbs);
+
+        Console.WriteLine("\nThe battle has ended. Please enter:");
+        Console.WriteLine("1 - To view statistics in this window");
+        Console.WriteLine("2 - To save statistics to a .txt file");
+
+        while (!validInput)
         {
-            bool dobarUnos = false;
-            IStatistikaBitkeServis sbs = new StatistikaBitkeServis();
-            IHerojiServis hs = new HerojiServis();
-            Console.WriteLine("\nThe battle is over , please enter 1 if you want to see statistics in this window or 2 if you want to see it in txt file.");
-            while (!dobarUnos)
+            string input = Console.ReadLine();
+            if (input != "1" && input != "2")
             {
-                string x = Console.ReadLine();
-                if(x != "1" && x != "2")
+                Console.WriteLine("Invalid input! Please enter either 1 or 2.");
+                continue;
+            }
+            validInput = true;
+
+            if (input == "1")
+            {
+                string output = sbs.IspisiNaEkran(nazivMape, idProdavnice);
+                Console.WriteLine("\n" + output);
+            }
+            else
+            {
+                Console.WriteLine("Please enter the filename to save the statistics (with .txt extension):");
+                string fileName = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(fileName))
                 {
-                    Console.WriteLine("Please enter a 1 or 2 only!");
+                    Console.WriteLine("Invalid filename. Operation aborted.");
+                    validInput = false; // Ponovo tražimo unos
                     continue;
                 }
-                dobarUnos = true;
-                if(x == "1")
+
+                try
                 {
-                    string ispis = sbs.IspisiStatistikuBitke(idProdavnice, nazivMape);
-                    Console.WriteLine(ispis);
+                    sbs.IspisiUDatoteku(nazivMape, idProdavnice, fileName);
+                    Console.WriteLine($"Statistics successfully saved to '{fileName}'.");
                 }
-                else
+                catch (Exception ex)
                 {
-                    Console.WriteLine("Please enter the name of txt file you would like to save statistics in: ");
-                    string NazivDatoteke = Console.ReadLine();
-                    if(string.IsNullOrWhiteSpace(NazivDatoteke))
-                    {
-                        Console.WriteLine("\nName of txt file is not valid!");
-                        continue;
-                    }
-                    sbs.IspisiUDatoteku(nazivMape, idProdavnice, NazivDatoteke);
+                    Console.WriteLine($"Error saving file: {ex.Message}");
                 }
             }
         }

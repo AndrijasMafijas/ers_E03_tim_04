@@ -9,7 +9,6 @@ namespace Domain.Servisi
     public interface ISimulacijaBitkeServis
     {
         public int GenerisiVremeTrajanjaBitke();
-
         public string SimulirajDogadjaj(float duzinaTB, int IdProdavnice, string nazivMape);
     }
 }

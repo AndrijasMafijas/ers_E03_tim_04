@@ -11,5 +11,8 @@ namespace Domain.Servisi
     {
         List<Heroj> GetCrveniTimHeroje();
         List<Heroj> GetPlaviTimHeroje();
+        public string IspisiListuHeroja();
+        public bool PronadjiHeroja(Guid g);
+        public Guid PronadjiHeroja(string x);
     }
 }

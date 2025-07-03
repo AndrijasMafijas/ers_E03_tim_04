@@ -1,58 +1,93 @@
 ﻿using Domain.Modeli;
+using Domain.PomocneMetode;
 using Domain.Servisi;
 using Services.BitkaServisi;
 using Services.ProdavnicaServisi;
+using System;
 
 namespace Presentation.GlavniMeni
 {
     public class MapaMeni
     {
         public MapaMeni() { }
-        public static int OdabirMape(int brojEntiteta,ref string IdMape)
+
+        public static int OdabirMape(int brojEntiteta, ref string mapName)
         {
-            Console.WriteLine("Now you need to choose map specifications: ");
-            int IdProdavnice = 0;
-            bool dobarUnos = false;
-            Prodavnica p;
-            Mapa m;
-            while (!dobarUnos)
-            {
-                Console.WriteLine("Enter map name: ");
-                string nazivMape = Console.ReadLine();
-                IOdabirMapeServis mapaServis = new OdabirMapeServis();
-                if (string.IsNullOrWhiteSpace(nazivMape)) continue;
-                m = mapaServis.PronadjiMapu(nazivMape);
-                if (m.NazivMape == string.Empty)
-                {
-                    Console.WriteLine(nazivMape + " doesn't exist.");
-                    continue;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("=======================================");
+            Console.WriteLine("        MAP SELECTION MENU             ");
+            Console.WriteLine("=======================================\n");
+            Console.ResetColor();
 
-                    //dodao sam jednu mapu u MapeRepository!
-                }
-                IdMape = m.NazivMape;
-                dobarUnos = true;
-            }
-            dobarUnos = false;
-            while (!dobarUnos)
+            int marketId = 0;
+            bool validInput = false;
+            Prodavnica store;
+            Mapa map;
+
+            // Map name input
+            while (!validInput)
             {
-                Console.WriteLine("Enter market id: ");
-                string idProdavnice = Console.ReadLine();
-                IOdabirMapeServis mapaServis = new OdabirMapeServis();
-                IOdabirProdavniceServis ops = new OdabirProdavniceServis();
-                int probaj;
-                if (string.IsNullOrWhiteSpace(idProdavnice) || !int.TryParse(idProdavnice , out probaj)) continue;
-                p = ops.PronadjiProdavnicu(probaj);
-                if (p.ID == 0)
+                Console.Write("Enter map name: ");
+                string inputMapName = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(inputMapName))
                 {
-                    Console.WriteLine("Market with id " + idProdavnice + " doesn't exist.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Map name cannot be empty. Please try again.\n");
+                    Console.ResetColor();
                     continue;
                 }
-                dobarUnos = true;
-                //dodao sam zbog testiranja i jednu prodavnicu u ProdavnicaRepository
-                IdProdavnice = p.ID;
+
+                map = PronadjiMapu.PronadjiMapuPoNazivu(inputMapName);
+
+                if (map.NazivMape == string.Empty)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Map '{inputMapName}' doesn't exist. Please enter a valid map name.\n");
+                    Console.ResetColor();
+                    continue;
+                }
+
+                mapName = map.NazivMape;
+                validInput = true;
             }
-            return IdProdavnice;
+
+            validInput = false;
+
+            // Market ID input
+            while (!validInput)
+            {
+                Console.Write("Enter market ID: ");
+                string inputMarketId = Console.ReadLine();
+                int parsedId;
+
+                if (string.IsNullOrWhiteSpace(inputMarketId) || !int.TryParse(inputMarketId, out parsedId))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid input! Please enter a valid numeric market ID.\n");
+                    Console.ResetColor();
+                    continue;
+                }
+
+                store = PronadjiProdavnicu.PronadjiProdavnicuPoIdu(parsedId);
+
+                if (store.ID == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Market with ID {inputMarketId} doesn't exist. Please try again.\n");
+                    Console.ResetColor();
+                    continue;
+                }
+
+                marketId = store.ID;
+                validInput = true;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\nYou have selected map: {mapName} with market ID: {marketId}.\n");
+            Console.ResetColor();
+
+            return marketId;
         }
-
     }
 }

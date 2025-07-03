@@ -2,10 +2,6 @@
 using Domain.Servisi;
 using Services.BitkaServisi;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Presentation.GlavniMeni
 {
@@ -15,83 +11,151 @@ namespace Presentation.GlavniMeni
 
         public static void DodavanjeIgraca()
         {
-            bool dobarUnos = false;
-            int brojka = 0;
-            while (!dobarUnos) {
-                Console.WriteLine("Please enter how many players will each team contain: (bettwen 1 and 5)");
-                string broj = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(broj) || !int.TryParse(broj, out brojka) || int.Parse(broj) > 5 || int.Parse(broj) < 1) continue;
-                dobarUnos = true;
-            }
-            dobarUnos = false;
-            //dodavanje u plavi tim
-            ITimoviServis ts = new TimoviServis();
-            Console.WriteLine(ts.IspisiListuHeroja());
-            Console.WriteLine("\nNow you are entering names and heroes for team blue: \n");
-            for(int i = 0; i < brojka; )
+            bool validInput = false;
+            int playerCount = 0;
+
+            // Ask for number of players per team
+            while (!validInput)
             {
-                Console.WriteLine((i+1) + ". player name: ");
-                string imeIgraca = Console.ReadLine();
-                if(string.IsNullOrWhiteSpace(imeIgraca) || imeIgraca.Length > 15)
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("=======================================");
+                Console.WriteLine("   ENTER NUMBER OF PLAYERS PER TEAM   ");
+                Console.WriteLine("=======================================\n");
+                Console.ResetColor();
+
+                Console.Write("Please enter how many players each team will contain (between 1 and 5): ");
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out playerCount) && playerCount >= 1 && playerCount <= 5)
                 {
-                    Console.WriteLine("Name must be valid");
+                    validInput = true;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid number! Please enter a number between 1 and 5.\n");
+                    Console.ResetColor();
+                }
+            }
+
+            ITimoviServis teamService = new TimoviServis();
+            IHerojiServis heroService = new HerojiServis();
+
+            Console.WriteLine("\nAvailable heroes:");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(heroService.IspisiListuHeroja());
+            Console.ResetColor();
+
+            // Add players to Blue Team
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\nNow entering players and heroes for the BLUE team:\n");
+            Console.ResetColor();
+
+            for (int i = 0; i < playerCount;)
+            {
+                Console.Write($"Player #{i + 1} name: ");
+                string playerName = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(playerName) || playerName.Length > 15)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid name! Name must be non-empty and up to 15 characters.\n");
+                    Console.ResetColor();
                     continue;
                 }
-                Console.WriteLine((i+1) + " hero: ");
-                string imeHeroja = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(imeHeroja))
+
+                Console.Write($"Player #{i + 1} hero: ");
+                string heroName = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(heroName))
                 {
-                    Console.WriteLine("Must enter a valid hero name");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Hero name cannot be empty.\n");
+                    Console.ResetColor();
                     continue;
                 }
-                Guid idHeroja = ts.PronadjiHeroja(imeHeroja);
-                if(idHeroja == Guid.Empty)
+
+                Guid heroId = heroService.PronadjiHeroja(heroName);
+
+                if (heroId == Guid.Empty)
                 {
-                    Console.WriteLine("Must enter an existing hero name");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Hero not found! Please enter an existing hero name.\n");
+                    Console.ResetColor();
                     continue;
                 }
-                if(ts.PronadjiHeroja(idHeroja))
+
+                if (heroService.PronadjiHeroja(heroId))
                 {
-                    Console.WriteLine("That hero is already picked by another player");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Hero already picked by another player. Choose a different hero.\n");
+                    Console.ResetColor();
                     continue;
                 }
-                ts.DodavanjeIgracaUPlaviTim(new Igrac(imeIgraca, idHeroja));
+
+                teamService.DodavanjeIgracaUPlaviTim(new Igrac(playerName, heroId));
                 i++;
             }
 
-            //dodavanje u crveni tim
-            Console.WriteLine("\nNow you are entering names and heroes for team red: \n");
-            Console.WriteLine(ts.IspisiListuHeroja());
-            for (int i = 0; i < brojka;)
+            // Add players to Red Team
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nNow entering players and heroes for the RED team:\n");
+            Console.ResetColor();
+
+            Console.WriteLine("Available heroes:");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(heroService.IspisiListuHeroja());
+            Console.ResetColor();
+
+            for (int i = 0; i < playerCount;)
             {
-                Console.WriteLine((i + 1) + ". player name: ");
-                string imeIgraca = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(imeIgraca) || imeIgraca.Length > 15)
+                Console.Write($"Player #{i + 1} name: ");
+                string playerName = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(playerName) || playerName.Length > 15)
                 {
-                    Console.WriteLine("Name must be valid");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid name! Name must be non-empty and up to 15 characters.\n");
+                    Console.ResetColor();
                     continue;
                 }
-                Console.WriteLine((i+1) +" hero: ");
-                string imeHeroja = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(imeHeroja))
+
+                Console.Write($"Player #{i + 1} hero: ");
+                string heroName = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(heroName))
                 {
-                    Console.WriteLine("Must enter a valid hero name");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Hero name cannot be empty.\n");
+                    Console.ResetColor();
                     continue;
                 }
-                Guid idHeroja = ts.PronadjiHeroja(imeHeroja);
-                if (idHeroja == Guid.Empty)
+
+                Guid heroId = heroService.PronadjiHeroja(heroName);
+
+                if (heroId == Guid.Empty)
                 {
-                    Console.WriteLine("Must enter an existing hero name");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Hero not found! Please enter an existing hero name.\n");
+                    Console.ResetColor();
                     continue;
                 }
-                if (ts.PronadjiHeroja(idHeroja))
+
+                if (heroService.PronadjiHeroja(heroId))
                 {
-                    Console.WriteLine("That hero is already picked by another player");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Hero already picked by another player. Choose a different hero.\n");
+                    Console.ResetColor();
                     continue;
                 }
-                ts.DodavanjeIgracaUCrveniTim(new Igrac(imeIgraca, idHeroja));
+
+                teamService.DodavanjeIgracaUCrveniTim(new Igrac(playerName, heroId));
                 i++;
             }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nTeams have been successfully created!\n");
+            Console.ResetColor();
         }
     }
 }

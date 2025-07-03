@@ -1,51 +1,95 @@
 ﻿using Domain.PomocneMetode;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Presentation.GlavniMeni
 {
     public class EntitetMeni
     {
         EntitetMeni() { }
+
         public static int OdabirEntiteta()
         {
-            bool dobarOdabir = false;
-            while (!dobarOdabir) {
+            bool validChoice = false;
+
+            while (!validChoice)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("========================================");
+                Console.WriteLine("        ENTITY SELECTION MENU           ");
+                Console.WriteLine("========================================\n");
+                Console.ResetColor();
+
                 Console.WriteLine("Enter 1 to manually enter entities, or 2 to generate them automatically.");
-                string linija = Console.ReadLine();
-                int odabir;
-                if (!string.IsNullOrWhiteSpace(linija) && int.TryParse(linija , out odabir))
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                string input = Console.ReadLine();
+                Console.ResetColor();
+
+                int choice;
+
+                if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out choice))
                 {
-                    if (odabir == 1 || odabir == 2)
+                    if (choice == 1 || choice == 2)
                     {
-                        dobarOdabir = true;
-                        if (odabir == 2)
+                        validChoice = true;
+
+                        if (choice == 2)
                         {
-                            int brojka = GeneratorEntiteta.GenerisiBrojEntiteta();
-                            Console.WriteLine("Randomly generated " + brojka + " entities.");
-                            return brojka;
+                            int generatedCount = GeneratorEntiteta.GenerisiBrojEntiteta();
+
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"\nRandomly generated {generatedCount} entities.\n");
+                            Console.ResetColor();
+
+                            return generatedCount;
                         }
                         else
                         {
                             while (true)
                             {
-                                Console.WriteLine("Please enter number of entities: (bettwen 1 and 10)");
-                                string linijaa = Console.ReadLine();
-                                int brojEntiteta;
-                                if (string.IsNullOrWhiteSpace(linijaa) || !int.TryParse(linijaa , out brojEntiteta)|| Convert.ToInt32(linijaa) < 1 || Convert.ToInt32(linijaa) > 10) continue;
-                                return brojEntiteta;
+                                Console.WriteLine("Please enter the number of entities (between 1 and 10):");
+
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                string manualInput = Console.ReadLine();
+                                Console.ResetColor();
+
+                                int manualCount;
+
+                                if (!string.IsNullOrWhiteSpace(manualInput)
+                                    && int.TryParse(manualInput, out manualCount)
+                                    && manualCount >= 1
+                                    && manualCount <= 10)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine($"\nYou entered {manualCount} entities.\n");
+                                    Console.ResetColor();
+
+                                    return manualCount;
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Invalid input! Please enter a number between 1 and 10.\n");
+                                    Console.ResetColor();
+                                }
                             }
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Please enter just 1 or 2");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Please enter only 1 or 2.\n");
+                        Console.ResetColor();
                     }
                 }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid input! Please enter a valid number.\n");
+                    Console.ResetColor();
+                }
             }
+
             return 0;
         }
     }

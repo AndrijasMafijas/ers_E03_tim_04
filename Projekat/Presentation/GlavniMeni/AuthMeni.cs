@@ -1,60 +1,59 @@
 ﻿using Domain.Servisi;
 using Services.AuthServisi;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Presentation.GlavniMeni
 {
     public class AuthMeni
     {
         public AuthMeni() { }
+
         public static void Autentifikacija()
         {
             IAuthServis auth = new AuthServis();
-            bool ulogovan = false;
-            Console.WriteLine("Welcome!");
-            //testiranje (radi)
-            /*
-            Console.WriteLine("For testing purposes please add 1 user first since we don't have DB...");
-            bool dobarUnos = false;
-            while (!dobarUnos)
+            bool loggedIn = false;
+
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("===========================================");
+            Console.WriteLine("          WELCOME TO THE APPLICATION        ");
+            Console.WriteLine("===========================================\n");
+            Console.ResetColor();
+
+            while (!loggedIn)
             {
-                Console.WriteLine("Create Username: ");
-                string createdUsername = Console.ReadLine();
-                Console.WriteLine("Create Password: ");
-                string createdPassword = Console.ReadLine();
-                if (createdUsername != string.Empty && createdPassword != string.Empty)
-                {
-                    dobarUnos = true;
-                    AuthDodavanjeKorisnika authDodavanje = new AuthDodavanjeKorisnika();
-                    authDodavanje.dodajKorisnika(createdUsername, createdPassword);
-                } else
-                {
-                    Console.WriteLine("Please enter valid username and password");
-                }
-            }
-            */
-            while (!ulogovan)
-            {
-                Console.WriteLine("Please enter your username: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Username: ");
+                Console.ResetColor();
                 string username = Console.ReadLine();
-                Console.WriteLine("Please enter your password: ");
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Password: ");
+                Console.ResetColor();
                 string password = Console.ReadLine();
 
-                if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+                Console.WriteLine();
+
+                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 {
-                    if (auth.Autentifikacija(username, password))
-                    {
-                        ulogovan = true;
-                        Console.WriteLine("Login successful!");
-                    }
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Please enter a valid username and password.\n");
+                    Console.ResetColor();
+                    continue;
+                }
+
+                if (auth.Autentifikacija(username, password))
+                {
+                    loggedIn = true;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Login successful! Welcome, {0}.\n", username);
+                    Console.ResetColor();
                 }
                 else
                 {
-                    Console.WriteLine("\nPlease enter valid username and password.\n");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Authentication failed! Please check your username and password.\n");
+                    Console.ResetColor();
                 }
             }
         }
