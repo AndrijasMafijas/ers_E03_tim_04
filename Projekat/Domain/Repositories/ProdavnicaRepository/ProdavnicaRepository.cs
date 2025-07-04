@@ -9,10 +9,10 @@ namespace Domain.Repositories.ProdavnicaRepository
             Prodavnice = new List<Prodavnica> {
                 new Prodavnica(1,0,new List<Oruzje>
                 {
-                    new Oruzje("Kundak",100,10,2)
+                    new Oruzje("Malj",100,10,20)
                 } , new List<Napitak>
                 {
-                    new Napitak("Vesticjin otrov",150,17,4)
+                    new Napitak("Rakija",150,17,10)
                 })
             };
         }

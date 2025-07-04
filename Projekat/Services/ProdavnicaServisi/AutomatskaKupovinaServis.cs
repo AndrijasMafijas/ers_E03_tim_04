@@ -19,7 +19,7 @@ namespace Services.ProdavnicaServisi
         {
             string x = "";
             Heroj pobednikovHeroj = heroji.PronadjiPoId(pobednik.getIdHeroja());
-            while(pobednikovHeroj.TrenutnoNovcica >= 500)
+            while(pobednikovHeroj.TrenutnoNovcica >= 300)
             {
                 Prodavnica p = prodavnice.PronadjiProdavnicuPoIdu(IdProdavnice);
                 //opet generisem da li ce da kupi oruzje ili napitak

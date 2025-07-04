@@ -1,27 +1,29 @@
 ===== BATTLE STATISTICS =====
 
 >>> RED TEAM:
-Player              Hero                              HP   ATK    Gold
+Player               Hero                               HP    ATK     Gold
 ---------------------------------------------------------------------------
-Lazar               Jax                                0    81       0
+Mile                 Kayn                                0     50        0
+Dragutin             Morgana                             0     75        0
 
 >>> BLUE TEAM:
-Player              Hero                              HP   ATK    Gold
+Player               Hero                               HP    ATK     Gold
 ---------------------------------------------------------------------------
-Andrija             Zed                               59    95     300
+Andrija              Jax                                52     82      450
+Kayn                 Zed                                59     70        0
 
 >>> MAP:
-Name           Type            Max Players
+Name            Type             Max Players
 ---------------------------------------------
-Test           LETNJA                   10
+Test            LETNJA                    10
 
-Red Team       Blue Team      Support entities
+Red Team        Blue Team       Support Entities
 ---------------------------------------------
-Orlovi         Tigrovi                     10
+Orlovi          Tigrovi                      10
 
 >>> SHOP:
    ID
 ------------------------------
     1
 ------------------------------
-TOTAL REVENUE:  0
+TOTAL REVENUE:  150

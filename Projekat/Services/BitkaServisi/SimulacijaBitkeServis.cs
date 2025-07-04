@@ -40,7 +40,7 @@ namespace Services.BitkaServisi
         }
         public string SimulirajDogadjaj(float duzinaTB, int IdProdavnice, string nazivMape)
         {
-            Thread.Sleep(Convert.ToInt32(Math.Floor(duzinaTB / 20)) * 1000);
+            Thread.Sleep(Convert.ToInt32(Math.Floor(duzinaTB / 15)) * 1000);
 
             StringBuilder sb = new StringBuilder();
             Igrac pobednik;
